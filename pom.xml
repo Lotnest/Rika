@@ -58,7 +58,9 @@
                 <version>3.2.0</version>
                 <configuration>
                     <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                        <manifest>
+                            <mainClass>lotnest.rika.Rika</mainClass>
+                        </manifest>
                     </archive>
                 </configuration>
             </plugin>
