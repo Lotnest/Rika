@@ -1,1 +1,1 @@
-worker: java target/Rika.jar
+worker: java -jar target/Rika.jar
