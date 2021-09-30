@@ -1,1 +1,1 @@
-worker: java -jar lotnest.rika.Rika
+worker: mvn exec:java -Dexec.mainClass="lotnest.rika.Rika"
