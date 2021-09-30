@@ -1,1 +1,1 @@
-worker: java -jar lotnest.rika.Rika
+worker: java lotnest.rika.Rika
