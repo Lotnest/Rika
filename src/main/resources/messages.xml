@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!-- @formatter:off -->
+<properties>
+    <entry key="activity">haLO Panie i Panowie</entry>
+    <entry key="footer">Rika - Lotnest#1602</entry>
+    <entry key="new-student-title">Nowy student (#{0})</entry>
+    <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.
+    </entry>
+    <entry key="student-left-title">Student opuścił serwer (#{0})</entry>
+    <entry key="boost-message-title">Nowy boost (#{0})</entry>
+    <entry key="boost-message-description">Dziękujemy za boosta!</entry>
+</properties>

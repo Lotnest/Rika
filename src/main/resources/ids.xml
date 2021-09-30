@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="welcome-leave-messages-channel">767439681246724146</entry>
+    <entry key="boost-messages-channel">893194640080113694</entry>
+    <entry key="specialization-message">767742817573011487</entry>
+    <entry key="specialization-databases-role">767743253843804180</entry>
+    <entry key="specialization-software-engineering-and-databases-role">767743324982476811</entry>
+    <entry key="specialization-system-and-network-programming-role">767743466553212979</entry>
+    <entry key="specialization-intelligent-data-processing-systems-role">767743567162245152</entry>
+    <entry key="specialization-multimedia-role">767743678957223956</entry>
+    <entry key="specialization-multimedia-3d-animation-role">767743762196594688</entry>
+    <entry key="specialization-multimedia-game-programming-role">767743806770380850</entry>
+    <entry key="specialization-robotics-role">767744034336538694</entry>
+    <entry key="specialization-business-applications-programming-role">767744185860096010</entry>
+    <entry key="specialization-mobile-devices-networks-role">767744299471208481</entry>
+    <entry key="hobby-message">767683001873858570</entry>
+    <entry key="hobby-programming-role">767680725289795584</entry>
+    <entry key="hobby-gaming-role">767719574505652305</entry>
+    <entry key="hobby-animals-role">767719618683863100</entry>
+    <entry key="hobby-learning-role">767719776092160030</entry>
+    <entry key="hobby-reading-role">767719812054384660</entry>
+    <entry key="hobby-music-role">767719850310500383</entry>
+    <entry key="hobby-singing-role">767722157068910593</entry>
+    <entry key="hobby-instruments-role">767720046852046859</entry>
+    <entry key="hobby-sport-role">767720152422678529</entry>
+    <entry key="hobby-dyi-role">767720205035110441</entry>
+    <entry key="hobby-drawing-role">767720244755824711</entry>
+    <entry key="hobby-astronomy-role">767720363890049044</entry>
+    <entry key="hobby-anime-role">767720408915902465</entry>
+    <entry key="hobby-dance-role">768124290700410880</entry>
+</properties>
