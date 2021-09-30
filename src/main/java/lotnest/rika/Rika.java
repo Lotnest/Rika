@@ -44,12 +44,7 @@ public class Rika {
 
     @SneakyThrows
     public static void main(final String[] args) {
-        if (args == null || args.length < 1) {
-            System.out.println("You have to provide a token as the first argument.");
-            System.exit(1);
-        }
-
-        final JDABuilder jdaBuilder = JDABuilder.create(args[0], GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
+        final JDABuilder jdaBuilder = JDABuilder.create(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(Config.ACTIVITY_TYPE, Message.ACTIVITY));
 
