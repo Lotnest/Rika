@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static lotnest.rika.Rika.PREFIX;
@@ -19,7 +20,7 @@ public class MessageUtil {
             return new ArrayList<>();
         }
 
-        final List<String> args = new ArrayList<>(List.of(command.split("!")));
+        final List<String> args = new ArrayList<>(Arrays.asList(command.split("!")));
         args.remove(0);
         return args;
     }
