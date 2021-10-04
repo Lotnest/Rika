@@ -3,17 +3,22 @@ package lotnest.rika;
 import lombok.SneakyThrows;
 import lotnest.rika.configuration.Config;
 import lotnest.rika.configuration.Message;
+import lotnest.rika.listener.command.GroupCommandListener;
 import lotnest.rika.listener.reaction.HobbyReactionListener;
 import lotnest.rika.listener.reaction.SpecializationReactionListener;
 import lotnest.rika.listener.student.StudentListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 public class Rika {
@@ -46,10 +51,15 @@ public class Rika {
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(Config.ACTIVITY_TYPE, Message.ACTIVITY));
 
-        JDA = jdaBuilder.addEventListeners(
+        JDA = jdaBuilder.addEventListeners(getListeners()).build();
+    }
+
+    private static @NotNull List<ListenerAdapter> getListeners() {
+        return Arrays.asList(
                 new StudentListener(),
                 new SpecializationReactionListener(),
-                new HobbyReactionListener()
-        ).build();
+                new HobbyReactionListener(),
+                new GroupCommandListener()
+        );
     }
 }

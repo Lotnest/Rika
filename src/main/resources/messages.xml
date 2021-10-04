@@ -5,9 +5,15 @@
     <entry key="activity">haLO Panie i Panowie</entry>
     <entry key="footer">Rika - Lotnest#1602</entry>
     <entry key="new-student-title">Nowy student (#{0})</entry>
-    <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.
-    </entry>
+    <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.</entry>
     <entry key="student-left-title">Student opuścił serwer (#{0})</entry>
     <entry key="boost-message-title">Nowy boost (#{0})</entry>
     <entry key="boost-message-description">Dziękujemy za boosta!</entry>
+    <entry key="command-title">Komenda - !{0}</entry>
+    <entry key="group-command">grupa</entry>
+    <entry key="group-command-added-exercise">Dodano grupę ćwiczeniową {0}.</entry>
+    <entry key="group-command-added-lecture">Dodano grupę lektoratową {0}.</entry>
+    <entry key="group-command-invalid-type">Prawidłowe typy grup to: ćwiczeniowa (np. **16c**) oraz lektoratowa (np. **125l**).</entry>
+    <entry key="group-command-exercise-not-found">Grupa ćwiczeniowa {0} nie istnieje.</entry>
+    <entry key="group-command-lecture-not-found">Grupa lektoratowa {0} nie istnieje.</entry>
 </properties>
