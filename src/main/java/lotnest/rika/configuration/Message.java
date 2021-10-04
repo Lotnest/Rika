@@ -16,8 +16,11 @@ public class Message {
     public static final String BOOST_MESSAGE_DESCRIPTION = MESSAGES.getProperty("boost-message-description");
     public static final String COMMAND_TITLE = MESSAGES.getProperty("command-title");
     public static final String GROUP_COMMAND = MESSAGES.getProperty("group-command");
+    public static final String GROUP_COMMAND_ALREADY_ASSIGNED = MESSAGES.getProperty("group-command-already-assigned");
     public static final String GROUP_COMMAND_ADDED_EXERCISE = MESSAGES.getProperty("group-command-added-exercise");
+    public static final String GROUP_COMMAND_CHANGED_EXERCISE = MESSAGES.getProperty("group-command-changed-exercise");
     public static final String GROUP_COMMAND_ADDED_LECTURE = MESSAGES.getProperty("group-command-added-lecture");
+    public static final String GROUP_COMMAND_CHANGED_LECTURE = MESSAGES.getProperty("group-command-changed-lecture");
     public static final String GROUP_COMMAND_INVALID_TYPE = MESSAGES.getProperty("group-command-invalid-type");
     public static final String GROUP_COMMAND_EXERCISE_NOT_FOUND = MESSAGES.getProperty("group-command-exercise-not-found");
     public static final String GROUP_COMMAND_LECTURE_NOT_FOUND = MESSAGES.getProperty("group-command-lecture-not-found");

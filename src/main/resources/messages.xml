@@ -11,8 +11,11 @@
     <entry key="boost-message-description">Dziękujemy za boosta!</entry>
     <entry key="command-title">Komenda - !{0}</entry>
     <entry key="group-command">grupa</entry>
+    <entry key="group-command-already-assigned">Już jesteś w grupie {0}.</entry>
     <entry key="group-command-added-exercise">Dodano grupę ćwiczeniową {0}.</entry>
+    <entry key="group-command-changed-exercise">Zmieniono grupę ćwiczeniową z {0} na {1}.</entry>
     <entry key="group-command-added-lecture">Dodano grupę lektoratową {0}.</entry>
+    <entry key="group-command-changed-lecture">Zmieniono grupę lektoratową z {0} na {1}.</entry>
     <entry key="group-command-invalid-type">Prawidłowe typy grup to: ćwiczeniowa (np. **16c**) oraz lektoratowa (np. **125l**).</entry>
     <entry key="group-command-exercise-not-found">Grupa ćwiczeniowa {0} nie istnieje.</entry>
     <entry key="group-command-lecture-not-found">Grupa lektoratowa {0} nie istnieje.</entry>

@@ -5,10 +5,6 @@ import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static lotnest.rika.Rika.MAIN_COLOR;
 import static lotnest.rika.Rika.PREFIX;
 import static lotnest.rika.configuration.Message.FOOTER;
@@ -24,17 +20,18 @@ public class MessageUtil {
         return message != null && message.startsWith(PREFIX + (expectedCommand != null ? expectedCommand : ""));
     }
 
-    public static @NotNull List<String> getArguments(@Nullable final String command) {
+    public static String @NotNull [] getArguments(@Nullable final String command) {
         if (!isValidCommand(command)) {
-            return new ArrayList<>();
+            return new String[]{};
         }
-
-        final List<String> args = new ArrayList<>(Arrays.asList(command.split("!")));
-        args.remove(0);
-        return args;
+        return command.replaceFirst(PREFIX, "").split(" ");
     }
 
-    public static String replacePlaceholders(@NotNull String message, final Object @NotNull ... objects) {
+    public static String replacePlaceholders(@NotNull String message, final Object @Nullable ... objects) {
+        if (objects == null) {
+            return message;
+        }
+        
         int i = 0;
         for (final Object object : objects) {
             message = message.replace("{" + i + "}", objects[i++].toString());

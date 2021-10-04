@@ -6,5 +6,6 @@ import static lotnest.rika.Rika.CONFIG;
 
 public class Config {
 
+    public static final String PREFIX = CONFIG.getProperty("prefix", "!");
     public static final Activity.ActivityType ACTIVITY_TYPE = Activity.ActivityType.valueOf(CONFIG.getProperty("activity-type", Activity.ActivityType.DEFAULT.toString()));
 }
