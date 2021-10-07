@@ -15,8 +15,8 @@ import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
 public class GroupCommandListener extends ListenerAdapter {
 
-    public static final Pattern EXERCISE_PATTERN = Pattern.compile("[0-9][0-9]c");
-    public static final Pattern LECTURE_PATTERN = Pattern.compile("[0-9][0-9][0-9]l");
+    public static final Pattern EXERCISE_PATTERN = Pattern.compile("(\\d){2}[Cc]");
+    public static final Pattern LECTURE_PATTERN = Pattern.compile("(\\d){3}[Ll]");
 
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {

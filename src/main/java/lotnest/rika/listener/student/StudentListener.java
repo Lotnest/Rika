@@ -22,7 +22,7 @@ import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
 public class StudentListener extends ListenerAdapter {
 
-    public static final Pattern STUDENT_PATTERN = Pattern.compile("[Ss]{1}(\\d){3,5} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,}");
+    public static final Pattern STUDENT_PATTERN = Pattern.compile("[Ss](\\d){3,5} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,}");
 
     @Override
     public void onGuildMemberJoin(@NotNull final GuildMemberJoinEvent event) {
