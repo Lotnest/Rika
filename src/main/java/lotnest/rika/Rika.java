@@ -3,7 +3,7 @@ package lotnest.rika;
 import lombok.SneakyThrows;
 import lotnest.rika.configuration.Config;
 import lotnest.rika.configuration.Message;
-import lotnest.rika.listener.command.GroupCommandListener;
+import lotnest.rika.listener.command.group.GroupCommandListener;
 import lotnest.rika.listener.reaction.HobbyReactionListener;
 import lotnest.rika.listener.reaction.SpecializationReactionListener;
 import lotnest.rika.listener.student.StudentListener;
@@ -22,6 +22,7 @@ public class Rika {
     public static final Properties CONFIG = new Properties();
     public static final Properties IDS = new Properties();
     public static final Properties MESSAGES = new Properties();
+    public static final Properties COMMANDS = new Properties();
 
     public static JDA JDA;
     public static String PREFIX;
@@ -33,6 +34,7 @@ public class Rika {
             CONFIG.loadFromXML(classLoader.getResourceAsStream("config.xml"));
             IDS.loadFromXML(classLoader.getResourceAsStream("ids.xml"));
             MESSAGES.loadFromXML(classLoader.getResourceAsStream("messages.xml"));
+            COMMANDS.loadFromXML(classLoader.getResourceAsStream("commands.xml"));
 
             PREFIX = CONFIG.getProperty("prefix");
         } catch (final IOException e) {
