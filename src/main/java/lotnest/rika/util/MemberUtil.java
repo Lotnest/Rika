@@ -15,6 +15,9 @@ import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
 public class MemberUtil {
 
+    private MemberUtil() {
+    }
+
     public static @NotNull String getNameAndTag(@Nullable final Member member) {
         if (member == null) {
             return "";

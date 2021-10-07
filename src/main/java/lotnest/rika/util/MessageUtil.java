@@ -56,7 +56,7 @@ public class MessageUtil {
 
     public static @NotNull Optional<Map<MessageChannel, Member>> getCommandChannel(final @NotNull GuildMessageReceivedEvent event) {
         final MessageChannel channel = event.getChannel();
-        if (!channel.getId().equals(Id.COMMANDS_CHANNEL) && !channel.getId().equals(Id.TESTING_CHANNEL)) {
+        if (!channel.getId().equals(Id.COMMANDS_CHANNEL) && !channel.getId().equals(Id.TESTING_CHANNEL) && !channel.getId().equals(Id.VERIFICATION_CHANNEL)) {
             return Optional.empty();
         }
 

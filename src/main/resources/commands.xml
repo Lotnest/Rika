@@ -3,4 +3,5 @@
 <properties>
     <entry key="group">grupa</entry>
     <entry key="groups">grupy</entry>
+    <entry key="welcome">witamy</entry>
 </properties>

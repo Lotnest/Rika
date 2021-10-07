@@ -6,4 +6,5 @@ public class Command {
 
     public static final String GROUP = COMMANDS.getProperty("group");
     public static final String GROUPS = COMMANDS.getProperty("groups");
+    public static final String WELCOME = COMMANDS.getProperty("welcome");
 }

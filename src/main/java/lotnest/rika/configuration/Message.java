@@ -27,6 +27,10 @@ public class Message {
     public static final String FAILED_TO_VERIFY = MESSAGES.getProperty("failed-to-verify");
     public static final String STUDENT_ROLE_NOT_FOUND = MESSAGES.getProperty("student-role-not-found");
     public static final String VERIFIED_SUCCESSFULLY = MESSAGES.getProperty("verified-successfully");
+    public static final String WELCOME_TITLE = MESSAGES.getProperty("welcome-title");
+    public static final String WELCOME_DESCRIPTION = MESSAGES.getProperty("welcome-description");
+    public static final String MOST_POPULAR_EXERCISE_GROUPS = MESSAGES.getProperty("most-popular-exercise-groups");
+    public static final String MOST_POPULAR_LECTURE_GROUPS = MESSAGES.getProperty("most-popular-lecture-groups");
 
     private Message() {
     }
