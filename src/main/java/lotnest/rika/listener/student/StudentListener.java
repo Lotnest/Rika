@@ -75,6 +75,10 @@ public class StudentListener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
         MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+            if (!channel.getId().equals(Id.VERIFICATION_CHANNEL)) {
+                return;
+            }
+
             final Guild guild = event.getGuild();
             final Role studentRole = guild.getRoleById(Id.STUDENT_ROLE);
             final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
