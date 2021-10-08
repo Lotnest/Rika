@@ -21,6 +21,10 @@ public class GroupCommandListener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
         MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+            if (member.getUser().isBot()) {
+                return;
+            }
+
             final String[] arguments = MessageUtil.getArguments(event.getMessage().getContentDisplay());
             if (arguments.length < 2) {
                 return;

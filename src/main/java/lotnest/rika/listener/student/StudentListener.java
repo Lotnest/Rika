@@ -79,6 +79,10 @@ public class StudentListener extends ListenerAdapter {
                 return;
             }
 
+            if (member.getUser().isBot()) {
+                return;
+            }
+
             final Guild guild = event.getGuild();
             final Role studentRole = guild.getRoleById(Id.STUDENT_ROLE);
             final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);

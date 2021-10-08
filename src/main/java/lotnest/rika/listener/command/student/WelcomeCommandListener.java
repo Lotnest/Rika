@@ -14,6 +14,10 @@ public class WelcomeCommandListener extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
         MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+            if (member.getUser().isBot()) {
+                return;
+            }
+
             if (!channel.getId().equals(Id.VERIFICATION_CHANNEL)) {
                 return;
             }
