@@ -24,11 +24,11 @@
     <entry key="student-role-not-found">Rola "Student" nie istnieje, ktoś ją usunął?</entry>
     <entry key="welcome-title">Weryfikacja</entry>
     <entry key="welcome-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.
-        Jeśli widzisz ten kanał, to znaczy, że nie masz jeszcze roli Studenta.
+    Jeśli widzisz ten kanał, to znaczy, że nie masz jeszcze roli Studenta.
 
-        Napisz proszę poniżej w kolejności: swój **numer indeksu (sXXXXX)**, swoje **imię** oraz **nazwisko**, żebyśmy mogli Cię rozpoznać, po czym rola zostanie Ci przydzielona automatycznie.
+    Napisz proszę poniżej w kolejności: swój **numer indeksu (sXXXXX)**, swoje **imię** oraz **nazwisko**, żebyśmy mogli Cię rozpoznać, po czym rola zostanie Ci przydzielona automatycznie.
 
-        *Nie przechowujemy Twoich danych osobistych, zaraz po przeprocesowaniu roli, zostaną usunięte.*</entry>
+    *Nie przechowujemy Twoich danych osobistych, zaraz po przeprocesowaniu roli, zostaną usunięte.*</entry>
     <entry key="most-popular-exercise-groups">**Najpopularniejsze grupy ćwiczeniowe:**</entry>
     <entry key="most-popular-lecture-groups">**Najpopularniejsze grupy lektoratowe:**</entry>
 </properties>
