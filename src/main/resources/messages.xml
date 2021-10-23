@@ -31,4 +31,7 @@
     *Nie przechowujemy Twoich danych osobistych, zaraz po przeprocesowaniu roli, zostaną usunięte.*</entry>
     <entry key="most-popular-exercise-groups">**Najpopularniejsze grupy ćwiczeniowe:**</entry>
     <entry key="most-popular-lecture-groups">**Najpopularniejsze grupy lektoratowe:**</entry>
+    <entry key="ping-description">Opóźnienie wynosi {0} ms.</entry>
+    <entry key="service-error-occurred">Wystąpił błąd serwera, spróbuj ponownie później.</entry>
+    <entry key="it-employee-description">{0}, Ty jesteś najlepszym pracownikiem IT ❤️</entry>
 </properties>

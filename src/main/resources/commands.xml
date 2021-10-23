@@ -4,4 +4,8 @@
     <entry key="group">grupa</entry>
     <entry key="groups">grupy</entry>
     <entry key="welcome">witamy</entry>
+    <entry key="ping">ping</entry>
+    <entry key="cat">kot</entry>
+    <entry key="dog">pies</entry>
+    <entry key="it-employee">pracownikit</entry>
 </properties>

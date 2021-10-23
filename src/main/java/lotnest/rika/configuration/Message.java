@@ -31,6 +31,9 @@ public class Message {
     public static final String WELCOME_DESCRIPTION = MESSAGES.getProperty("welcome-description");
     public static final String MOST_POPULAR_EXERCISE_GROUPS = MESSAGES.getProperty("most-popular-exercise-groups");
     public static final String MOST_POPULAR_LECTURE_GROUPS = MESSAGES.getProperty("most-popular-lecture-groups");
+    public static final String PING_DESCRIPTION = MESSAGES.getProperty("ping-description");
+    public static final String SERVICE_ERROR_OCCURRED = MESSAGES.getProperty("service-error-occurred");
+    public static final String IT_EMPLOYEE_DESCRIPTION = MESSAGES.getProperty("it-employee-description");
 
     private Message() {
     }
