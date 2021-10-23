@@ -19,6 +19,9 @@ import static lotnest.rika.util.MemberUtil.getNameAndTag;
 
 public class MessageUtil {
 
+    private MessageUtil() {
+    }
+
     public static boolean isValidCommand(@Nullable final String message) {
         return isValidCommand(message, null);
     }
