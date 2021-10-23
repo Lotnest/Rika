@@ -25,7 +25,6 @@ public class Message {
     public static final String GROUP_COMMAND_LECTURE_NOT_FOUND = MESSAGES.getProperty("group-command-lecture-not-found");
     public static final String ALREADY_VERIFIED = MESSAGES.getProperty("already-verified");
     public static final String FAILED_TO_VERIFY = MESSAGES.getProperty("failed-to-verify");
-    public static final String STUDENT_ROLE_NOT_FOUND = MESSAGES.getProperty("student-role-not-found");
     public static final String VERIFIED_SUCCESSFULLY = MESSAGES.getProperty("verified-successfully");
     public static final String WELCOME_TITLE = MESSAGES.getProperty("welcome-title");
     public static final String WELCOME_DESCRIPTION = MESSAGES.getProperty("welcome-description");
@@ -34,6 +33,12 @@ public class Message {
     public static final String PING_DESCRIPTION = MESSAGES.getProperty("ping-description");
     public static final String SERVICE_ERROR_OCCURRED = MESSAGES.getProperty("service-error-occurred");
     public static final String IT_EMPLOYEE_DESCRIPTION = MESSAGES.getProperty("it-employee-description");
+    public static final String USER_MUTED = MESSAGES.getProperty("user-muted");
+    public static final String USER_ALREADY_MUTED = MESSAGES.getProperty("user-already-muted");
+    public static final String ROLE_NOT_FOUND = MESSAGES.getProperty("role-not-found");
+    public static final String NO_USER_TO_MUTE = MESSAGES.getProperty("no-user-to-mute");
+    public static final String COMMAND_NO_PERMISSION = MESSAGES.getProperty("command-no-permission");
+    public static final String MUTED_ROLE_NAME = MESSAGES.getProperty("muted-role-name");
 
     private Message() {
     }

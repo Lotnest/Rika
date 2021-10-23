@@ -21,7 +21,6 @@
     <entry key="verified-successfully">Udało nam się zweryfikować Ciebie jako studenta, dziękujemy! Nie trzymamy Twoich danych, kasujemy je od razu po przeprocesowaniu roli.</entry>
     <entry key="already-verified">Już zostałeś zweryfikowany jako student.</entry>
     <entry key="failed-to-verify">Nie udało nam się zweryfikować Ciebie jako studenta.</entry>
-    <entry key="student-role-not-found">Rola "Student" nie istnieje, ktoś ją usunął?</entry>
     <entry key="welcome-title">Weryfikacja</entry>
     <entry key="welcome-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.
     Jeśli widzisz ten kanał, to znaczy, że nie masz jeszcze roli Studenta.
@@ -34,4 +33,10 @@
     <entry key="ping-description">Opóźnienie wynosi {0} ms.</entry>
     <entry key="service-error-occurred">Wystąpił błąd serwera, spróbuj ponownie później.</entry>
     <entry key="it-employee-description">{0}, Ty jesteś najlepszym pracownikiem IT ❤️</entry>
+    <entry key="user-muted">Użytkownik {0} został wyciszony.</entry>
+    <entry key="user-already-muted">Użytkownik {0} jest już wyciszony.</entry>
+    <entry key="role-not-found">Rola {0} nie istnieje.</entry>
+    <entry key="no-user-to-mute">Nie podano użytkownika do wyciszenia.</entry>
+    <entry key="command-no-permission">Nie masz uprawnień do użycia tej komendy.</entry>
+    <entry key="muted-role-name">Wyciszony</entry>
 </properties>

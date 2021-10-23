@@ -11,4 +11,5 @@ public class Command {
     public static final String CAT = COMMANDS.getProperty("cat");
     public static final String DOG = COMMANDS.getProperty("dog");
     public static final String IT_EMPLOYEE = COMMANDS.getProperty("it-employee");
+    public static final String MUTE = COMMANDS.getProperty("mute");
 }
