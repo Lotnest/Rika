@@ -1,17 +1,14 @@
 package lotnest.rika;
 
+import com.openpojo.reflection.PojoClass;
+import com.openpojo.reflection.impl.PojoClassFactory;
 import lombok.SneakyThrows;
 import lotnest.rika.configuration.Config;
 import lotnest.rika.configuration.Message;
-import lotnest.rika.listener.command.group.GroupCommandListener;
-import lotnest.rika.listener.command.group.GroupsCommandListener;
-import lotnest.rika.listener.command.student.WelcomeCommandListener;
-import lotnest.rika.listener.reaction.HobbyReactionListener;
-import lotnest.rika.listener.reaction.SpecializationReactionListener;
-import lotnest.rika.listener.student.StudentListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.jetbrains.annotations.NotNull;
@@ -45,23 +42,26 @@ public class Rika {
         }
     }
 
+    @SneakyThrows
     public static void main(final String[] args) {
+        final long now = System.currentTimeMillis();
+
         final JDABuilder jdaBuilder = JDABuilder.create(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
         jdaBuilder.disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS);
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(Config.ACTIVITY_TYPE, Message.ACTIVITY));
-        addEventListeners(jdaBuilder);
+        JDA = addEventListeners(jdaBuilder).build();
+        JDA.awaitReady();
+
+        System.out.println("Rika bot loaded in " + (System.currentTimeMillis() - now) + " ms");
     }
 
     @SneakyThrows
-    private static void addEventListeners(@NotNull final JDABuilder jdaBuilder) {
-        JDA = jdaBuilder.addEventListeners(
-                new StudentListener(),
-                new SpecializationReactionListener(),
-                new HobbyReactionListener(),
-                new GroupCommandListener(),
-                new GroupsCommandListener(),
-                new WelcomeCommandListener()
-        ).build();
+    private static JDABuilder addEventListeners(@NotNull final JDABuilder jdaBuilder) {
+        for (final PojoClass pojoClass : PojoClassFactory.enumerateClassesByExtendingType("lotnest.rika.listener", ListenerAdapter.class, null)) {
+            final Object object = pojoClass.getClazz().newInstance();
+            jdaBuilder.addEventListeners(object);
+        }
+        return jdaBuilder;
     }
 }
