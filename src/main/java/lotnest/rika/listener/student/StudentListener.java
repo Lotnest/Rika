@@ -2,6 +2,7 @@ package lotnest.rika.listener.student;
 
 import lotnest.rika.configuration.Id;
 import lotnest.rika.configuration.Message;
+import lotnest.rika.util.CommandUtil;
 import lotnest.rika.util.MessageUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -74,7 +75,7 @@ public class StudentListener extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
-        MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+        CommandUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
             if (!channel.getId().equals(Id.VERIFICATION_CHANNEL)) {
                 return;
             }
@@ -95,7 +96,7 @@ public class StudentListener extends ListenerAdapter {
             }
 
             if (studentRole == null) {
-                embedBuilder.setDescription(Message.STUDENT_ROLE_NOT_FOUND);
+                embedBuilder.setDescription(Message.ROLE_NOT_FOUND);
                 channel.sendMessageEmbeds(embedBuilder.build()).queue();
                 message.delete().queue();
                 return;

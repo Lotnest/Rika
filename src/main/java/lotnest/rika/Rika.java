@@ -23,10 +23,9 @@ public class Rika {
     public static final Properties IDS = new Properties();
     public static final Properties MESSAGES = new Properties();
     public static final Properties COMMANDS = new Properties();
-
+    public static final Color MAIN_COLOR = new Color(0, 184, 238);
     public static JDA JDA;
     public static String PREFIX;
-    public static final Color MAIN_COLOR = new Color(0, 184, 238);
 
     static {
         try {

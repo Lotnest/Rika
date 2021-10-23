@@ -3,6 +3,7 @@ package lotnest.rika.listener.command.student;
 import lotnest.rika.configuration.Command;
 import lotnest.rika.configuration.Id;
 import lotnest.rika.configuration.Message;
+import lotnest.rika.util.CommandUtil;
 import lotnest.rika.util.MessageUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -13,7 +14,7 @@ public class WelcomeCommand extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
-        MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+        CommandUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
             if (member.getUser().isBot()) {
                 return;
             }
@@ -22,7 +23,7 @@ public class WelcomeCommand extends ListenerAdapter {
                 return;
             }
 
-            final String[] arguments = MessageUtil.getArguments(event.getMessage().getContentDisplay());
+            final String[] arguments = CommandUtil.getArguments(event.getMessage().getContentDisplay());
             if (arguments.length < 1) {
                 return;
             }
