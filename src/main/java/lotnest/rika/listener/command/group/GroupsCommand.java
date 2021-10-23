@@ -15,11 +15,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
-public class GroupsCommandListener extends ListenerAdapter {
+public class GroupsCommand extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(@NotNull final GuildMessageReceivedEvent event) {
         MessageUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+            if (member.getUser().isBot()) {
+                return;
+            }
+
             final String[] arguments = MessageUtil.getArguments(event.getMessage().getContentDisplay());
             if (arguments.length < 1) {
                 return;
@@ -36,14 +40,14 @@ public class GroupsCommandListener extends ListenerAdapter {
             CompletableFuture.runAsync(() -> {
                 final AtomicInteger i = new AtomicInteger();
                 embedBuilder.appendDescription("\n" + Message.MOST_POPULAR_EXERCISE_GROUPS);
-                RoleUtil.findRolesWithMemberCount(GroupCommandListener.EXERCISE_PATTERN, guild)
+                RoleUtil.findRolesWithMemberCount(GroupCommand.EXERCISE_PATTERN, guild)
                         .forEach((role, memberCount) -> embedBuilder.appendDescription("\n[" + i.incrementAndGet() + "] " + role.getName() + ": " + memberCount));
 
                 i.set(0);
                 embedBuilder.appendDescription("\n\n");
 
                 embedBuilder.appendDescription(Message.MOST_POPULAR_LECTURE_GROUPS);
-                RoleUtil.findRolesWithMemberCount(GroupCommandListener.LECTURE_PATTERN, guild)
+                RoleUtil.findRolesWithMemberCount(GroupCommand.LECTURE_PATTERN, guild)
                         .forEach((role, memberCount) -> embedBuilder.appendDescription("\n[" + i.incrementAndGet() + "] " + role.getName() + ": " + memberCount));
 
                 event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();

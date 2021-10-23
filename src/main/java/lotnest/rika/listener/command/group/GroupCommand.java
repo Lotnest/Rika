@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import static lotnest.rika.util.MemberUtil.findRoleAndAddToMember;
 import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
-public class GroupCommandListener extends ListenerAdapter {
+public class GroupCommand extends ListenerAdapter {
 
     public static final Pattern EXERCISE_PATTERN = Pattern.compile("(\\d){2}[Cc]");
     public static final Pattern LECTURE_PATTERN = Pattern.compile("(\\d){3}[Ll]");
