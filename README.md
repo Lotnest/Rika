@@ -1,2 +1,2 @@
 # Rika
-Discord Bot stworzony na potrzeby pomocy zaocznym studentom Polsko-Japońskiej Akademii Technik Komputerowych w Warszawie.
+Discord Bot created to help extramural students of the Polish-Japanese Academy of Information Technology in Warsaw.
