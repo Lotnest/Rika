@@ -24,7 +24,7 @@ import static lotnest.rika.util.MessageUtil.replacePlaceholders;
 
 public class StudentManager extends ListenerAdapter {
 
-    public static final Pattern STUDENT_PATTERN = Pattern.compile("[Ss](\\d){3,5} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,} [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,}");
+    public static final Pattern STUDENT_PATTERN = Pattern.compile(MessageProperty.STUDENT_REGEX);
 
     @Override
     public void onGuildMemberJoin(final @NotNull GuildMemberJoinEvent event) {
