@@ -14,7 +14,6 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.Properties;
 
 public class Rika {
@@ -24,35 +23,30 @@ public class Rika {
     public static final Properties MESSAGES = new Properties();
     public static final Properties COMMANDS = new Properties();
     public static final Color MAIN_COLOR = new Color(0, 184, 238);
-    public static JDA JDA;
-    public static String PREFIX;
-
-    static {
-        try {
-            final ClassLoader classLoader = Rika.class.getClassLoader();
-            CONFIG.loadFromXML(classLoader.getResourceAsStream("config.xml"));
-            IDS.loadFromXML(classLoader.getResourceAsStream("ids.xml"));
-            MESSAGES.loadFromXML(classLoader.getResourceAsStream("messages.xml"));
-            COMMANDS.loadFromXML(classLoader.getResourceAsStream("commands.xml"));
-
-            PREFIX = CONFIG.getProperty("prefix");
-        } catch (final IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private static JDA jda;
 
     @SneakyThrows
     public static void main(final String[] args) {
         final long now = System.currentTimeMillis();
 
+        final ClassLoader classLoader = Rika.class.getClassLoader();
+        CONFIG.loadFromXML(classLoader.getResourceAsStream("config.xml"));
+        IDS.loadFromXML(classLoader.getResourceAsStream("ids.xml"));
+        MESSAGES.loadFromXML(classLoader.getResourceAsStream("messages.xml"));
+        COMMANDS.loadFromXML(classLoader.getResourceAsStream("commands.xml"));
+
         final JDABuilder jdaBuilder = JDABuilder.create(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
         jdaBuilder.disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS);
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(Config.ACTIVITY_TYPE, Message.ACTIVITY));
-        JDA = addEventListeners(jdaBuilder).build();
-        JDA.awaitReady();
+        jda = addEventListeners(jdaBuilder).build();
+        jda.awaitReady();
 
         System.out.println("Rika bot loaded in " + (System.currentTimeMillis() - now) + " ms");
+    }
+
+    public static JDA getJDA() {
+        return jda;
     }
 
     @SneakyThrows

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static lotnest.rika.Rika.PREFIX;
+import static lotnest.rika.configuration.Config.PREFIX;
 
 public class CommandUtil {
 
