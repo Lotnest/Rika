@@ -1,9 +1,7 @@
 package lotnest.rika.command;
 
-import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 
-@Data
 public abstract class Command {
 
     public abstract String getName();

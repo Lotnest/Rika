@@ -11,5 +11,6 @@ public class ReactionInfo {
     private final Guild guild;
     private final Member memberReacted;
     private final String messageId;
+    private final String emoji;
     private final MessageChannel channel;
 }

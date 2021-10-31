@@ -15,13 +15,13 @@ public class SpecializationReaction extends Reaction {
 
     @Override
     public void handleReactionAdd(final @NotNull ReactionInfo reactionInfo) {
-        SpecializationType.fromEmoji(getMessageId())
+        SpecializationType.fromEmoji(reactionInfo.getEmoji())
                 .ifPresent(specializationType -> specializationType.addRole(reactionInfo.getMemberReacted()));
     }
 
     @Override
     public void handleReactionRemove(final @NotNull ReactionInfo reactionInfo) {
-        SpecializationType.fromEmoji(getMessageId())
+        SpecializationType.fromEmoji(reactionInfo.getEmoji())
                 .ifPresent(specializationType -> specializationType.removeRole(reactionInfo.getMemberReacted()));
     }
 }

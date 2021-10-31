@@ -15,13 +15,13 @@ public class HobbyReaction extends Reaction {
 
     @Override
     public void handleReactionAdd(final @NotNull ReactionInfo reactionInfo) {
-        HobbyType.fromEmoji(getMessageId())
+        HobbyType.fromEmoji(reactionInfo.getEmoji())
                 .ifPresent(hobbyType -> hobbyType.addRole(reactionInfo.getMemberReacted()));
     }
 
     @Override
     public void handleReactionRemove(final @NotNull ReactionInfo reactionInfo) {
-        HobbyType.fromEmoji(getMessageId())
+        HobbyType.fromEmoji(reactionInfo.getEmoji())
                 .ifPresent(hobbyType -> hobbyType.removeRole(reactionInfo.getMemberReacted()));
     }
 }

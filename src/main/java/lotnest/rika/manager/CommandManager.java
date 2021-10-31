@@ -1,12 +1,18 @@
 package lotnest.rika.manager;
 
-import com.openpojo.reflection.PojoClass;
-import com.openpojo.reflection.impl.PojoClassFactory;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lotnest.rika.command.Command;
 import lotnest.rika.command.CommandInfo;
 import lotnest.rika.command.CommandType;
+import lotnest.rika.command.fun.CatCommand;
+import lotnest.rika.command.fun.DogCommand;
+import lotnest.rika.command.fun.ITEmployeeCommand;
+import lotnest.rika.command.student.GroupCommand;
+import lotnest.rika.command.student.GroupsCommand;
+import lotnest.rika.command.utility.MuteCommand;
+import lotnest.rika.command.utility.PingCommand;
+import lotnest.rika.command.utility.WelcomeCommand;
 import lotnest.rika.configuration.ConfigProperty;
 import lotnest.rika.configuration.IdProperty;
 import lotnest.rika.util.CommandUtil;
@@ -33,9 +39,14 @@ public class CommandManager extends ListenerAdapter {
         commandChannelIds.add(IdProperty.TESTING_CHANNEL);
         commandChannelIds.add(IdProperty.VERIFICATION_CHANNEL);
 
-        for (final PojoClass pojoClass : PojoClassFactory.enumerateClassesByExtendingType("lotnest.rika.command", Command.class, null)) {
-            commands.add((Command) pojoClass.getClazz().newInstance());
-        }
+        commands.add(new WelcomeCommand());
+        commands.add(new GroupCommand());
+        commands.add(new GroupsCommand());
+        commands.add(new CatCommand());
+        commands.add(new DogCommand());
+        commands.add(new ITEmployeeCommand());
+        commands.add(new PingCommand());
+        commands.add(new MuteCommand());
     }
 
     public CommandInfo getCommandInfo(final @NotNull GuildMessageReceivedEvent event) {
