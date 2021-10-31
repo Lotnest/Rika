@@ -1,4 +1,4 @@
-package lotnest.rika.enums;
+package lotnest.rika.reaction.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import static lotnest.rika.Rika.IDS;
 
 @AllArgsConstructor
 @Getter
-public enum Specialization {
+public enum SpecializationType {
 
     DATABASES("\uD83C\uDD94", IDS.getProperty("specialization-databases-role")),
     SOFTWARE_ENGINEERING_AND_DATABASES("⌨️", IDS.getProperty("specialization-software-engineering-and-databases-role")),
@@ -29,10 +29,10 @@ public enum Specialization {
     private final String roleId;
 
     @NotNull
-    public static Optional<Specialization> fromEmoji(@NotNull final String emoji) {
-        for (final Specialization specialization : values()) {
-            if (specialization.getUnicode().equals(emoji)) {
-                return Optional.of(specialization);
+    public static Optional<SpecializationType> fromEmoji(@NotNull final String emoji) {
+        for (final SpecializationType specializationType : values()) {
+            if (specializationType.getUnicode().equals(emoji)) {
+                return Optional.of(specializationType);
             }
         }
         return Optional.empty();

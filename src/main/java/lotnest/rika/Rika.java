@@ -1,17 +1,15 @@
 package lotnest.rika;
 
-import com.openpojo.reflection.PojoClass;
-import com.openpojo.reflection.impl.PojoClassFactory;
 import lombok.SneakyThrows;
-import lotnest.rika.configuration.Config;
-import lotnest.rika.configuration.Message;
+import lotnest.rika.configuration.ConfigProperty;
+import lotnest.rika.configuration.MessageProperty;
+import lotnest.rika.manager.CommandManager;
+import lotnest.rika.manager.ReactionManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.Properties;
@@ -38,8 +36,11 @@ public class Rika {
         final JDABuilder jdaBuilder = JDABuilder.create(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
         jdaBuilder.disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS);
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
-        jdaBuilder.setActivity(Activity.of(Config.ACTIVITY_TYPE, Message.ACTIVITY));
-        jda = addEventListeners(jdaBuilder).build();
+        jdaBuilder.setActivity(Activity.of(ConfigProperty.ACTIVITY_TYPE, MessageProperty.ACTIVITY));
+        jda = jdaBuilder.addEventListeners(
+                new CommandManager(),
+                new ReactionManager()
+        ).build();
         jda.awaitReady();
 
         System.out.println("Rika bot loaded in " + (System.currentTimeMillis() - now) + " ms");
@@ -47,14 +48,5 @@ public class Rika {
 
     public static JDA getJDA() {
         return jda;
-    }
-
-    @SneakyThrows
-    private static JDABuilder addEventListeners(@NotNull final JDABuilder jdaBuilder) {
-        for (final PojoClass pojoClass : PojoClassFactory.enumerateClassesByExtendingType("lotnest.rika.listener", ListenerAdapter.class, null)) {
-            final Object object = pojoClass.getClazz().newInstance();
-            jdaBuilder.addEventListeners(object);
-        }
-        return jdaBuilder;
     }
 }

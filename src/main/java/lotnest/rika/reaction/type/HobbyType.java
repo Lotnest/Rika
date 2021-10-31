@@ -1,4 +1,4 @@
-package lotnest.rika.enums;
+package lotnest.rika.reaction.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import static lotnest.rika.Rika.IDS;
 
 @AllArgsConstructor
 @Getter
-public enum Hobby {
+public enum HobbyType {
 
     PROGRAMMING("⌨️", IDS.getProperty("hobby-programming-role")),
     GAMING("\uD83C\uDFAE", IDS.getProperty("hobby-gaming-role")),
@@ -33,10 +33,10 @@ public enum Hobby {
     private final String roleId;
 
     @NotNull
-    public static Optional<Hobby> fromEmoji(@NotNull final String emoji) {
-        for (final Hobby hobby : values()) {
-            if (hobby.getUnicode().equals(emoji)) {
-                return Optional.of(hobby);
+    public static Optional<HobbyType> fromEmoji(@NotNull final String emoji) {
+        for (final HobbyType hobbyType : values()) {
+            if (hobbyType.getUnicode().equals(emoji)) {
+                return Optional.of(hobbyType);
             }
         }
         return Optional.empty();

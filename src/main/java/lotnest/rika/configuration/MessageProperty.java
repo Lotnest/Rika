@@ -5,7 +5,7 @@ import lombok.Getter;
 import static lotnest.rika.Rika.MESSAGES;
 
 @Getter
-public class Message {
+public class MessageProperty {
 
     public static final String ACTIVITY = MESSAGES.getProperty("activity");
     public static final String FOOTER = MESSAGES.getProperty("footer");
@@ -15,6 +15,8 @@ public class Message {
     public static final String BOOST_MESSAGE_TITLE = MESSAGES.getProperty("boost-message-title");
     public static final String BOOST_MESSAGE_DESCRIPTION = MESSAGES.getProperty("boost-message-description");
     public static final String COMMAND_TITLE = MESSAGES.getProperty("command-title");
+    public static final String GROUP_EXERCISE_REGEX = MESSAGES.getProperty("group-exercise-regex");
+    public static final String GROUP_LECTURE_REGEX = MESSAGES.getProperty("group-lecture-regex");
     public static final String GROUP_COMMAND_ALREADY_ASSIGNED = MESSAGES.getProperty("group-command-already-assigned");
     public static final String GROUP_COMMAND_ADDED_EXERCISE = MESSAGES.getProperty("group-command-added-exercise");
     public static final String GROUP_COMMAND_CHANGED_EXERCISE = MESSAGES.getProperty("group-command-changed-exercise");
@@ -40,6 +42,6 @@ public class Message {
     public static final String COMMAND_NO_PERMISSION = MESSAGES.getProperty("command-no-permission");
     public static final String MUTED_ROLE_NAME = MESSAGES.getProperty("muted-role-name");
 
-    private Message() {
+    private MessageProperty() {
     }
 }

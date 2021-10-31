@@ -1,7 +1,8 @@
 package lotnest.rika.util;
 
-import lotnest.rika.configuration.Id;
+import lotnest.rika.configuration.IdProperty;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +12,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static lotnest.rika.configuration.Config.PREFIX;
+import static lotnest.rika.configuration.ConfigProperty.PREFIX;
 
 public class CommandUtil {
 
@@ -33,9 +34,22 @@ public class CommandUtil {
         return command.replaceFirst(PREFIX, "").split(" ");
     }
 
-    public static @NotNull Optional<Map<MessageChannel, Member>> getCommandChannel(@NotNull final GuildMessageReceivedEvent event) {
+    public static String @NotNull [] getArguments(@Nullable final Message message) {
+        if (message == null) {
+            return new String[]{};
+        }
+
+        final String rawContent = message.getContentRaw();
+        if (!isValidCommand(rawContent)) {
+            return new String[]{};
+        }
+        return rawContent.replaceFirst(PREFIX, "").split(" ");
+    }
+
+    public static @NotNull
+    Optional<Map<MessageChannel, Member>> getCommandChannel(@NotNull final GuildMessageReceivedEvent event) {
         final MessageChannel channel = event.getChannel();
-        if (!channel.getId().equals(Id.COMMANDS_CHANNEL) && !channel.getId().equals(Id.TESTING_CHANNEL) && !channel.getId().equals(Id.VERIFICATION_CHANNEL)) {
+        if (!channel.getId().equals(IdProperty.COMMANDS_CHANNEL) && !channel.getId().equals(IdProperty.TESTING_CHANNEL) && !channel.getId().equals(IdProperty.VERIFICATION_CHANNEL)) {
             return Optional.empty();
         }
 

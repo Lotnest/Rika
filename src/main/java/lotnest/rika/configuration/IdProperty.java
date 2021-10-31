@@ -5,7 +5,7 @@ import lombok.Getter;
 import static lotnest.rika.Rika.IDS;
 
 @Getter
-public class Id {
+public class IdProperty {
 
     public static final String JOIN_LEAVE_MESSAGES_CHANNEL = IDS.getProperty("welcome-leave-messages-channel");
     public static final String BOOST_MESSAGES_CHANNEL = IDS.getProperty("boost-messages-channel");
@@ -18,8 +18,8 @@ public class Id {
     public static final String VERIFICATION_FAILED_ROLE = IDS.getProperty("verification-failed-role");
     public static final String MUTED_ROLE = IDS.getProperty("muted-role");
     public static final String MODERATOR_ROLE = IDS.getProperty("moderator-role");
-    public static final String ADMIN_ROLE = IDS.getProperty("admin-role");
+    public static final String ADMINISTRATOR_ROLE = IDS.getProperty("administrator-role");
 
-    private Id() {
+    private IdProperty() {
     }
 }

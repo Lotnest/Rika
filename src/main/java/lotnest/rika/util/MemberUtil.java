@@ -1,11 +1,12 @@
 package lotnest.rika.util;
 
-import lotnest.rika.configuration.Id;
+import lotnest.rika.command.student.GroupCommand;
+import lotnest.rika.configuration.IdProperty;
+import lotnest.rika.configuration.MessageProperty;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,49 +28,53 @@ public class MemberUtil {
         return member.getEffectiveName() + "#" + member.getUser().getDiscriminator();
     }
 
-    public static void addRole(@NotNull final Member member, @NotNull final String roleId) {
+    public static void addRole(final @NotNull Member member, final @NotNull String roleId) {
         final Role role = member.getGuild().getRoleById(roleId);
         if (role != null) {
             member.getGuild().addRoleToMember(member, role).queue();
         }
     }
 
-    public static void addRole(@NotNull final Member member, final long roleId) {
+    public static void addRole(final @NotNull Member member, final long roleId) {
         addRole(member, String.valueOf(roleId));
     }
 
-    public static void addRole(@NotNull final Member member, @NotNull final Role role) {
+    public static void addRole(final @NotNull Member member, final @NotNull Role role) {
         member.getGuild().addRoleToMember(member, role).queue();
     }
 
-    public static void removeRole(@NotNull final Member member, @NotNull final String roleId) {
+    public static void removeRole(final @NotNull Member member, final @NotNull String roleId) {
         final Role role = member.getGuild().getRoleById(roleId);
         if (role != null) {
             member.getGuild().removeRoleFromMember(member, role).queue();
         }
     }
 
-    public static void removeRole(@NotNull final Member member, final long roleId) {
+    public static void removeRole(final @NotNull Member member, final long roleId) {
         removeRole(member, String.valueOf(roleId));
     }
 
-    public static void removeRole(@NotNull final Member member, @NotNull final Role role) {
+    public static void removeRole(final @NotNull Member member, final @NotNull Role role) {
         member.getGuild().removeRoleFromMember(member, role).queue();
     }
 
-    public static @NotNull Optional<Role> findRole(@NotNull final Member member, final long roleId) {
+    public static @NotNull Optional<Role> findRole(final @NotNull Member member, final long roleId) {
         return member.getGuild().getRoles().stream()
                 .filter(role -> role.getIdLong() == roleId)
                 .findFirst();
     }
 
-    public static @NotNull Optional<Role> findRole(@NotNull final Member member, @NotNull final String roleName) {
+    public static @NotNull Optional<Role> findRole(final @NotNull Member member, final @NotNull String roleName) {
         return member.getGuild().getRoles().stream()
                 .filter(role -> role.getName().equalsIgnoreCase(roleName))
                 .findFirst();
     }
 
-    public static void findRoleAndAddToMember(@NotNull final String roleName, @NotNull final Member member, @NotNull final String roleAddedMessage, @NotNull final String roleNotFoundMessage, @NotNull final String roleAlreadyAssignedMessage, @NotNull final EmbedBuilder embedBuilder, @NotNull final MessageChannel channel) {
+    public static void findRoleAndAddToMember(final @NotNull String roleName, final @NotNull Member member, final @NotNull String roleAddedMessage, final @NotNull String roleNotFoundMessage, final @NotNull String roleAlreadyAssignedMessage, final @NotNull EmbedBuilder embedBuilder, final @NotNull MessageChannel channel) {
+        if (roleName.isEmpty()) {
+            return;
+        }
+
         final Optional<Role> optionalRole = findRole(member, roleName);
         if (optionalRole.isPresent()) {
             final Role role = optionalRole.get();
@@ -86,7 +91,28 @@ public class MemberUtil {
         }
     }
 
-    public static void findRoleAndAddToMember(@NotNull final Pattern pattern, @NotNull final String roleName, @NotNull final Member member, @NotNull final String roleAddedMessage, @NotNull final String roleNotFoundMessage, @NotNull final String roleAlreadyAssignedMessage, @NotNull final String roleChangedMessage, @NotNull final EmbedBuilder embedBuilder, @NotNull final MessageChannel channel) {
+    public static void findGroupRoleAndAddToMember(final @NotNull String group, final @NotNull Member member, final @NotNull EmbedBuilder embedBuilder, final @NotNull MessageChannel channel) {
+        final Pattern pattern = GroupCommand.EXERCISE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : GroupCommand.LECTURE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : null;
+        if (pattern == null) {
+            embedBuilder.setDescription(MessageProperty.GROUP_COMMAND_INVALID_TYPE);
+            channel.sendMessageEmbeds(embedBuilder.build()).queue();
+            return;
+        }
+
+        findRoleAndAddToMember(
+                pattern,
+                group,
+                member,
+                MessageProperty.GROUP_COMMAND_ADDED_EXERCISE,
+                MessageProperty.GROUP_COMMAND_EXERCISE_NOT_FOUND,
+                MessageProperty.GROUP_COMMAND_ALREADY_ASSIGNED,
+                MessageProperty.GROUP_COMMAND_CHANGED_EXERCISE,
+                embedBuilder,
+                channel
+        );
+    }
+
+    public static void findRoleAndAddToMember(final @NotNull Pattern pattern, final @NotNull String roleName, final @NotNull Member member, final @NotNull String roleAddedMessage, final @NotNull String roleNotFoundMessage, final @NotNull String roleAlreadyAssignedMessage, final @NotNull String roleChangedMessage, final @NotNull EmbedBuilder embedBuilder, final @NotNull MessageChannel channel) {
         final Optional<Role> optionalRole = findRole(member, roleName);
         if (optionalRole.isPresent()) {
             final Role role = optionalRole.get();
@@ -115,42 +141,40 @@ public class MemberUtil {
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
-    public static boolean hasRole(@NotNull final Member member, @NotNull final Role role) {
+    public static boolean hasRole(final @NotNull Member member, final @NotNull Role role) {
         return hasRole(member, role.getName());
     }
 
-    public static boolean hasRole(@NotNull final Member member, final long roleId) {
+    public static boolean hasRole(final @NotNull Member member, final long roleId) {
         return findRole(member, roleId).isPresent();
     }
 
-    public static boolean hasRole(@NotNull final Member member, @NotNull final String roleName) {
+    public static boolean hasRole(final @NotNull Member member, final @NotNull String roleName) {
         return findRole(member, roleName).isPresent();
     }
 
-    public static boolean isRole(@NotNull final GuildMessageReceivedEvent event, final boolean messageIfNoRole, @NotNull final String roleIdMessage) {
-        final Member member = event.getMember();
-        if (member == null) {
-            return false;
-        }
-
+    public static boolean hasRole(final @NotNull Member member, final @Nullable MessageChannel messageChannelIfNoRole, final @NotNull String roleIdMessage) {
         final boolean hasRole = hasRole(member, Long.parseLong(roleIdMessage));
-
-        if (messageIfNoRole && !hasRole) {
+        if (!hasRole && messageChannelIfNoRole != null) {
             final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
-            event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
+            messageChannelIfNoRole.sendMessageEmbeds(embedBuilder.build()).queue();
         }
         return hasRole;
     }
 
-    public static boolean isStudent(@NotNull final GuildMessageReceivedEvent event, final boolean messageIfNoRole) {
-        return isRole(event, messageIfNoRole, Id.STUDENT_ROLE);
+    public static boolean isStudent(final @NotNull Member member, final @Nullable MessageChannel messageChannelIfNoRole) {
+        return hasRole(member, messageChannelIfNoRole, IdProperty.STUDENT_ROLE);
     }
 
-    public static boolean isModerator(@NotNull final GuildMessageReceivedEvent event, final boolean messageIfNoRole) {
-        return isRole(event, messageIfNoRole, Id.MODERATOR_ROLE);
+    public static boolean isModerator(final @NotNull Member member, final @Nullable MessageChannel messageChannelIfNoRole) {
+        return hasRole(member, messageChannelIfNoRole, IdProperty.MODERATOR_ROLE);
     }
 
-    public static boolean isAdmin(@NotNull final GuildMessageReceivedEvent event, final boolean messageIfNoRole) {
-        return isRole(event, messageIfNoRole, Id.ADMIN_ROLE);
+    public static boolean isAdmin(final @NotNull Member member, final @Nullable MessageChannel messageChannelIfNoRole) {
+        return hasRole(member, messageChannelIfNoRole, IdProperty.ADMINISTRATOR_ROLE);
+    }
+
+    public static boolean isLotnest(final @NotNull String memberId) {
+        return memberId.equals("209254420192428032");
     }
 }
