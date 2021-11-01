@@ -8,5 +8,5 @@ public abstract class Command {
 
     public abstract CommandType getCommandType();
 
-    public abstract void execute(@NotNull final CommandInfo commandInfo);
+    public abstract void execute(final @NotNull CommandInfo commandInfo);
 }

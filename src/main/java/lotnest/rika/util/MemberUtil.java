@@ -92,7 +92,7 @@ public class MemberUtil {
     }
 
     public static void findGroupRoleAndAddToMember(final @NotNull String group, final @NotNull Member member, final @NotNull EmbedBuilder embedBuilder, final @NotNull MessageChannel channel) {
-        final Pattern pattern = GroupCommand.EXERCISE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : GroupCommand.LECTURE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : null;
+        final Pattern pattern = GroupCommand.EXERCISE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : GroupCommand.LANGUAGE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : null;
         if (pattern == null) {
             embedBuilder.setDescription(MessageProperty.GROUP_COMMAND_INVALID_TYPE);
             channel.sendMessageEmbeds(embedBuilder.build()).queue();

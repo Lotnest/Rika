@@ -19,7 +19,7 @@ import static lotnest.rika.util.MemberUtil.findGroupRoleAndAddToMember;
 public class GroupCommand extends Command {
 
     public static final Pattern EXERCISE_PATTERN = Pattern.compile(MessageProperty.GROUP_EXERCISE_REGEX);
-    public static final Pattern LECTURE_PATTERN = Pattern.compile(MessageProperty.GROUP_LECTURE_REGEX);
+    public static final Pattern LANGUAGE_PATTERN = Pattern.compile(MessageProperty.GROUP_LANGUAGE_REGEX);
 
     @Override
     public String getName() {

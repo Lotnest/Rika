@@ -41,8 +41,8 @@ public class GroupsCommand extends Command {
             i.set(0);
             embedBuilder.appendDescription("\n\n");
 
-            embedBuilder.appendDescription(MessageProperty.MOST_POPULAR_LECTURE_GROUPS);
-            RoleUtil.findRolesWithMemberCount(GroupCommand.LECTURE_PATTERN, guild)
+            embedBuilder.appendDescription(MessageProperty.MOST_POPULAR_LANGUAGE_GROUPS);
+            RoleUtil.findRolesWithMemberCount(GroupCommand.LANGUAGE_PATTERN, guild)
                     .forEach((role, memberCount) -> embedBuilder.appendDescription("\n[" + i.incrementAndGet() + "] " + role.getName() + ": " + memberCount));
 
             commandInfo.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
