@@ -4,7 +4,7 @@
 
 ## Description
 
-> Rika is a Java Discord bot that was created to help extramural students of the Polish-Japanese Academy of Information Technology in Warsaw (2020-2024). It helps in the daily communication of students between exercise groups or language classes. The bot is under constant development, so if you have any comments or suggestions, please do not hesitate to contact me.
+> Rika is a Java Discord bot that was created to help extramural students of the Polish-Japanese Academy of Information Technology in Warsaw (2020-2024). She helps in the daily communication of students between exercise groups or language classes. The bot is under constant development, so if you have any comments or suggestions, please do not hesitate to contact me.
 
 ## Features
 
