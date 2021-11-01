@@ -174,7 +174,7 @@ public class MemberUtil {
         return hasRole(member, messageChannelIfNoRole, IdProperty.ADMINISTRATOR_ROLE);
     }
 
-    public static boolean isLotnest(final @NotNull String memberId) {
+    public static boolean isExclusivePermissionUser(final @NotNull String memberId) {
         return memberId.equals("209254420192428032");
     }
 }
