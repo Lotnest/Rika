@@ -24,7 +24,7 @@ Name  | Version
 
 ## Commands
 
-The prefix used for all commands is`!`. Commands listed below are for public use only.
+The prefix used for all commands is `!`. Commands listed below are for public use only.
 
 | Command | Description |
 | ------------- | ------------------------------ |
