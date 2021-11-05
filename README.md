@@ -18,7 +18,7 @@
 Name  | Version
 :-------|--------:
 *Java*  | 8
-*Maven*  | 4.0.0
+*Maven*  | 3.8.2
 *Java Discord API (JDA)* | 4.3.0_331
 *Heroku* | -
 
