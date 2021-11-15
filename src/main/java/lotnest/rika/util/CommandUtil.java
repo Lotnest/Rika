@@ -19,22 +19,22 @@ public class CommandUtil {
     private CommandUtil() {
     }
 
-    public static boolean isValidCommand(@Nullable final String message) {
+    public static boolean isValidCommand(final @Nullable String message) {
         return isValidCommand(message, null);
     }
 
-    public static boolean isValidCommand(@Nullable final String message, final @Nullable String expectedCommand) {
+    public static boolean isValidCommand(final @Nullable String message, final @Nullable String expectedCommand) {
         return message != null && message.startsWith(PREFIX + (expectedCommand != null ? expectedCommand : ""));
     }
 
-    public static String @NotNull [] getArguments(@Nullable final String command) {
+    public static String @NotNull [] getArguments(final @Nullable String command) {
         if (!isValidCommand(command)) {
             return new String[]{};
         }
         return command.replaceFirst(PREFIX, "").split(" ");
     }
 
-    public static String @NotNull [] getArguments(@Nullable final Message message) {
+    public static String @NotNull [] getArguments(final @Nullable Message message) {
         if (message == null) {
             return new String[]{};
         }
@@ -46,8 +46,7 @@ public class CommandUtil {
         return rawContent.replaceFirst(PREFIX, "").split(" ");
     }
 
-    public static @NotNull
-    Optional<Map<MessageChannel, Member>> getCommandChannel(@NotNull final GuildMessageReceivedEvent event) {
+    public static @NotNull Optional<Map<MessageChannel, Member>> getCommandChannel(final @NotNull GuildMessageReceivedEvent event) {
         final MessageChannel channel = event.getChannel();
         if (!channel.getId().equals(IdProperty.COMMANDS_CHANNEL) && !channel.getId().equals(IdProperty.TESTING_CHANNEL) && !channel.getId().equals(IdProperty.VERIFICATION_CHANNEL)) {
             return Optional.empty();

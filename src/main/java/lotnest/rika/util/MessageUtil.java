@@ -15,7 +15,7 @@ public class MessageUtil {
     private MessageUtil() {
     }
 
-    public static @NotNull String replacePlaceholders(@NotNull String message, @NotNull final Object... objects) {
+    public static @NotNull String replacePlaceholders(@NotNull String message, final @NotNull Object... objects) {
         if (objects == null) {
             return message;
         }
@@ -27,7 +27,7 @@ public class MessageUtil {
         return message;
     }
 
-    public static @NotNull EmbedBuilder getDefaultEmbedBuilder(@NotNull final Member member) {
+    public static @NotNull EmbedBuilder getDefaultEmbedBuilder(final @NotNull Member member) {
         final EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setColor(MAIN_COLOR);
         embedBuilder.setAuthor(getNameAndTag(member), null, member.getUser().getAvatarUrl());
@@ -35,7 +35,7 @@ public class MessageUtil {
         return embedBuilder;
     }
 
-    public static @NotNull EmbedBuilder getCommandEmbedBuilder(@NotNull final CommandInfo commandInfo, final @NotNull String commandName) {
+    public static @NotNull EmbedBuilder getCommandEmbedBuilder(final @NotNull CommandInfo commandInfo, final @NotNull String commandName) {
         final Member member = commandInfo.getExecutor();
 
         final EmbedBuilder embedBuilder = new EmbedBuilder();

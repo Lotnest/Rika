@@ -29,7 +29,7 @@ public enum SpecializationType {
     private final String roleId;
 
     @NotNull
-    public static Optional<SpecializationType> fromEmoji(@NotNull final String emoji) {
+    public static Optional<SpecializationType> fromEmoji(final @NotNull String emoji) {
         for (final SpecializationType specializationType : values()) {
             if (specializationType.getUnicode().equals(emoji)) {
                 return Optional.of(specializationType);
@@ -38,11 +38,11 @@ public enum SpecializationType {
         return Optional.empty();
     }
 
-    public void addRole(@NotNull final Member member) {
+    public void addRole(final @NotNull Member member) {
         MemberUtil.addRole(member, roleId);
     }
 
-    public void removeRole(@NotNull final Member member) {
+    public void removeRole(final @NotNull Member member) {
         MemberUtil.removeRole(member, roleId);
     }
 }

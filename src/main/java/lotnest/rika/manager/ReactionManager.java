@@ -32,7 +32,7 @@ public class ReactionManager extends ListenerAdapter {
         reactions.add(new HobbyReaction());
     }
 
-    public ReactionInfo getReactionInfo(@NotNull final GenericGuildMessageReactionEvent event) {
+    public ReactionInfo getReactionInfo(final @NotNull GenericGuildMessageReactionEvent event) {
         return new ReactionInfo(
                 event.getGuild(),
                 event.getMember(),
@@ -42,12 +42,12 @@ public class ReactionManager extends ListenerAdapter {
         );
     }
 
-    public boolean isReactionMessage(@NotNull final String messageId) {
+    public boolean isReactionMessage(final @NotNull String messageId) {
         return reactionMessageIds.contains(messageId);
     }
 
     @Override
-    public void onGenericGuildMessageReaction(@NotNull final GenericGuildMessageReactionEvent event) {
+    public void onGenericGuildMessageReaction(final @NotNull GenericGuildMessageReactionEvent event) {
         final ReactionInfo reactionInfo = getReactionInfo(event);
         final Member member = reactionInfo.getMemberReacted();
         if (member == null || member.getUser().isBot()) {

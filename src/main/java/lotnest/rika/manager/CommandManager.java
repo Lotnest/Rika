@@ -97,5 +97,4 @@ public class CommandManager extends ListenerAdapter {
                     .ifPresent(command -> command.execute(commandInfo));
         }
     }
-
 }

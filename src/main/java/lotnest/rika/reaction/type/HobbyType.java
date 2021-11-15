@@ -33,7 +33,7 @@ public enum HobbyType {
     private final String roleId;
 
     @NotNull
-    public static Optional<HobbyType> fromEmoji(@NotNull final String emoji) {
+    public static Optional<HobbyType> fromEmoji(final @NotNull String emoji) {
         for (final HobbyType hobbyType : values()) {
             if (hobbyType.getUnicode().equals(emoji)) {
                 return Optional.of(hobbyType);
@@ -42,11 +42,11 @@ public enum HobbyType {
         return Optional.empty();
     }
 
-    public void addRole(@NotNull final Member member) {
+    public void addRole(final @NotNull Member member) {
         MemberUtil.addRole(member, roleId);
     }
 
-    public void removeRole(@NotNull final Member member) {
+    public void removeRole(final @NotNull Member member) {
         MemberUtil.removeRole(member, roleId);
     }
 }
