@@ -5,6 +5,7 @@ import lotnest.rika.configuration.ConfigProperty;
 import lotnest.rika.configuration.MessageProperty;
 import lotnest.rika.manager.CommandManager;
 import lotnest.rika.manager.ReactionManager;
+import lotnest.rika.manager.StudentManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -38,6 +39,7 @@ public class Rika {
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(ConfigProperty.ACTIVITY_TYPE, MessageProperty.ACTIVITY));
         jda = jdaBuilder.addEventListeners(
+                new StudentManager(),
                 new CommandManager(),
                 new ReactionManager()
         ).build();
