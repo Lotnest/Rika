@@ -1,4 +1,4 @@
-package lotnest.rika.util;
+package lotnest.rika.utils;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
@@ -18,13 +18,13 @@ public class RoleUtil {
     private RoleUtil() {
     }
 
-    public static @NotNull List<Role> findRoles(@NotNull final String regex, @NotNull final Guild guild) {
+    public static @NotNull List<Role> findRoles(@NotNull String regex, @NotNull Guild guild) {
         return findRoles(Pattern.compile(regex), guild);
     }
 
-    public static @NotNull List<Role> findRoles(@NotNull final Pattern pattern, @NotNull final Guild guild) {
-        final List<Role> roles = new ArrayList<>();
-        for (final Role role : guild.getRoles()) {
+    public static @NotNull List<Role> findRoles(@NotNull Pattern pattern, @NotNull Guild guild) {
+        List<Role> roles = new ArrayList<>();
+        for (Role role : guild.getRoles()) {
             if (pattern.matcher(role.getName()).matches()) {
                 roles.add(role);
             }
@@ -32,12 +32,12 @@ public class RoleUtil {
         return roles;
     }
 
-    public static @NotNull Map<Role, Integer> findRolesWithMemberCount(@NotNull final String regex, @NotNull final Guild guild) {
+    public static @NotNull Map<Role, Integer> findRolesWithMemberCount(@NotNull String regex, @NotNull Guild guild) {
         return findRolesWithMemberCount(Pattern.compile(regex), guild);
     }
 
-    public static @NotNull Map<Role, Integer> findRolesWithMemberCount(@NotNull final Pattern pattern, @NotNull final Guild guild) {
-        final Map<Role, Integer> rolesWithMemberCount = new HashMap<>();
+    public static @NotNull Map<Role, Integer> findRolesWithMemberCount(@NotNull Pattern pattern, @NotNull Guild guild) {
+        Map<Role, Integer> rolesWithMemberCount = new HashMap<>();
         findRoles(pattern, guild).forEach(role -> rolesWithMemberCount.put(role, guild.getMembersWithRoles(role).size()));
         return rolesWithMemberCount.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))

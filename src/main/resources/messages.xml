@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <!-- @formatter:off -->
 <properties>
-    <entry key="activity">Magia, po prostu magia.</entry>
+    <entry key="activity">Głosujcie na zdalne</entry>
     <entry key="footer">Rika - Lotnest#1602</entry>
     <entry key="new-student-title">Nowy student (#{0})</entry>
     <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.</entry>
@@ -23,14 +23,14 @@
     <entry key="group-command-language-not-found">Grupa lektoratowa {0} nie istnieje.</entry>
     <entry key="verified-successfully">Udało nam się zweryfikować Ciebie jako studenta, dziękujemy! Nie trzymamy Twoich danych, usuwamy je od razu po przeprocesowaniu roli.</entry>
     <entry key="already-verified">Już zostałeś zweryfikowany jako student.</entry>
-    <entry key="failed-to-verify">Nie udało nam się zweryfikować Ciebie jako studenta.</entry>
+    <entry key="failed-to-verify">Niestety, nie udało nam się zweryfikować Ciebie jako studenta. Skontaktuj się z administracją.</entry>
     <entry key="welcome-title">Weryfikacja</entry>
     <entry key="welcome-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.
     Jeśli widzisz ten kanał, to znaczy, że nie masz jeszcze roli Studenta.
 
     Napisz proszę poniżej w kolejności: swój **numer indeksu (sXXXXX)**, swoje **imię** oraz **nazwisko**, żebyśmy mogli Cię rozpoznać, po czym rola zostanie Ci przydzielona automatycznie.
 
-    *Nie przechowujemy Twoich danych osobistych, zaraz po przeprocesowaniu roli, zostaną usunięte.*</entry>
+    *Nie przechowujemy Twoich danych osobowych, zaraz po przeprocesowaniu roli, zostaną one usunięte.*</entry>
     <entry key="most-popular-exercise-groups">**Najpopularniejsze grupy ćwiczeniowe:**</entry>
     <entry key="most-popular-language-groups">**Najpopularniejsze grupy lektoratowe:**</entry>
     <entry key="ping-description">Opóźnienie wynosi {0} ms.</entry>
@@ -42,4 +42,5 @@
     <entry key="no-user-to-mute">Nie podano użytkownika do wyciszenia.</entry>
     <entry key="command-no-permission">Nie masz uprawnień do użycia tej komendy.</entry>
     <entry key="muted-role-name">Wyciszony</entry>
+    <entry key="work-in-progress">Prace w toku, spróbuj ponownie później.</entry>
 </properties>

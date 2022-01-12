@@ -2,8 +2,8 @@ package lotnest.rika.manager;
 
 import lotnest.rika.configuration.IdProperty;
 import lotnest.rika.configuration.MessageProperty;
-import lotnest.rika.util.CommandUtil;
-import lotnest.rika.util.MessageUtil;
+import lotnest.rika.utils.CommandUtils;
+import lotnest.rika.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static lotnest.rika.util.MessageUtil.replacePlaceholders;
+import static lotnest.rika.utils.MessageUtils.replacePlaceholders;
 
 public class StudentManager extends ListenerAdapter {
 
@@ -35,7 +35,7 @@ public class StudentManager extends ListenerAdapter {
         }
 
         final Member member = event.getMember();
-        final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
+        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(replacePlaceholders(MessageProperty.NEW_STUDENT_TITLE, guild.getMemberCount()));
         embedBuilder.setDescription(MessageProperty.NEW_STUDENT_DESCRIPTION);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
@@ -54,7 +54,7 @@ public class StudentManager extends ListenerAdapter {
             return;
         }
 
-        final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
+        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(replacePlaceholders(MessageProperty.STUDENT_LEFT_TITLE, guild.getMemberCount()));
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
@@ -68,7 +68,7 @@ public class StudentManager extends ListenerAdapter {
         }
 
         final Member member = event.getMember();
-        final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
+        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(replacePlaceholders(MessageProperty.BOOST_MESSAGE_TITLE, guild.getBoostCount()));
         embedBuilder.setDescription(MessageProperty.BOOST_MESSAGE_DESCRIPTION);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
@@ -76,7 +76,7 @@ public class StudentManager extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(final @NotNull GuildMessageReceivedEvent event) {
-        CommandUtil.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
+        CommandUtils.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
             if (!channel.getId().equals(IdProperty.VERIFICATION_CHANNEL)) {
                 return;
             }
@@ -87,7 +87,7 @@ public class StudentManager extends ListenerAdapter {
 
             final Guild guild = event.getGuild();
             final Role studentRole = guild.getRoleById(IdProperty.STUDENT_ROLE);
-            final EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
+            final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
             final List<Role> memberRoles = member.getRoles();
             final Role verificatonFailedRole = guild.getRoleById(IdProperty.VERIFICATION_FAILED_ROLE);
             final Message message = event.getMessage();

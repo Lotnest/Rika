@@ -1,4 +1,4 @@
-package lotnest.rika.util;
+package lotnest.rika.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

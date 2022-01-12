@@ -42,6 +42,7 @@ public class MessageProperty {
     public static final String NO_USER_TO_MUTE = MESSAGES.getProperty("no-user-to-mute");
     public static final String COMMAND_NO_PERMISSION = MESSAGES.getProperty("command-no-permission");
     public static final String MUTED_ROLE_NAME = MESSAGES.getProperty("muted-role-name");
+    public static final String WORK_IN_PROGRESS = MESSAGES.getProperty("work-in-progress");
 
     private MessageProperty() {
     }

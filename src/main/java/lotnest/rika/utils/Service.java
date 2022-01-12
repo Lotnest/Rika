@@ -1,4 +1,4 @@
-package lotnest.rika.util;
+package lotnest.rika.utils;
 
 import lombok.SneakyThrows;
 import lotnest.rika.configuration.MessageProperty;
@@ -14,16 +14,16 @@ public interface Service {
     String getServiceUrl();
 
     @SneakyThrows
-    default String getJsonValue(final @NotNull String jsonKey) {
-        final OkHttpClient httpClient = new OkHttpClient();
-        final Request request = new Request.Builder()
+    default String getJsonValue(@NotNull String jsonKey) {
+        OkHttpClient httpClient = new OkHttpClient();
+        Request request = new Request.Builder()
                 .url(getServiceUrl())
                 .build();
-        final Response response = httpClient.newCall(request).execute();
-        final ResponseBody responseBody = response.body();
+        Response response = httpClient.newCall(request).execute();
+        ResponseBody responseBody = response.body();
 
         if (responseBody != null) {
-            final JSONObject jsonResponse = new JSONObject(responseBody.string());
+            JSONObject jsonResponse = new JSONObject(responseBody.string());
             return jsonResponse.get(jsonKey).toString();
         }
 

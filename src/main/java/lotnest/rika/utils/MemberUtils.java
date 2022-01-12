@@ -1,4 +1,4 @@
-package lotnest.rika.util;
+package lotnest.rika.utils;
 
 import lotnest.rika.command.student.GroupCommand;
 import lotnest.rika.configuration.IdProperty;
@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-import static lotnest.rika.util.MessageUtil.replacePlaceholders;
+import static lotnest.rika.utils.MessageUtils.replacePlaceholders;
 
-public class MemberUtil {
+public class MemberUtils {
 
-    private MemberUtil() {
+    private MemberUtils() {
     }
 
     public static @NotNull String getNameAndTag(@Nullable Member member) {
@@ -156,7 +156,7 @@ public class MemberUtil {
     public static boolean hasRole(@NotNull Member member, @Nullable MessageChannel messageChannelIfNoRole, @NotNull String roleIdMessage) {
         boolean hasRole = hasRole(member, Long.parseLong(roleIdMessage));
         if (!hasRole && messageChannelIfNoRole != null) {
-            EmbedBuilder embedBuilder = MessageUtil.getDefaultEmbedBuilder(member);
+            EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
             messageChannelIfNoRole.sendMessageEmbeds(embedBuilder.build()).queue();
         }
         return hasRole;

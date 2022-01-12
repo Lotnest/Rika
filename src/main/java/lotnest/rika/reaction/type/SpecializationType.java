@@ -2,7 +2,7 @@ package lotnest.rika.reaction.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lotnest.rika.util.MemberUtil;
+import lotnest.rika.utils.MemberUtils;
 import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,10 +39,10 @@ public enum SpecializationType {
     }
 
     public void addRole(final @NotNull Member member) {
-        MemberUtil.addRole(member, roleId);
+        MemberUtils.addRole(member, roleId);
     }
 
     public void removeRole(final @NotNull Member member) {
-        MemberUtil.removeRole(member, roleId);
+        MemberUtils.removeRole(member, roleId);
     }
 }

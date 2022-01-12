@@ -1,4 +1,4 @@
-package lotnest.rika.util;
+package lotnest.rika.utils;
 
 import lotnest.rika.configuration.IdProperty;
 import net.dv8tion.jda.api.entities.Member;
@@ -14,9 +14,9 @@ import java.util.Optional;
 
 import static lotnest.rika.configuration.ConfigProperty.PREFIX;
 
-public class CommandUtil {
+public class CommandUtils {
 
-    private CommandUtil() {
+    private CommandUtils() {
     }
 
     public static boolean isValidCommand(final @Nullable String message) {

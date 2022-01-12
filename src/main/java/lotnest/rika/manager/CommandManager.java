@@ -10,12 +10,13 @@ import lotnest.rika.command.fun.DogCommand;
 import lotnest.rika.command.fun.ITEmployeeCommand;
 import lotnest.rika.command.student.GroupCommand;
 import lotnest.rika.command.student.GroupsCommand;
-import lotnest.rika.command.utility.MuteCommand;
-import lotnest.rika.command.utility.PingCommand;
-import lotnest.rika.command.utility.WelcomeCommand;
+import lotnest.rika.command.student.PlanCommand;
+import lotnest.rika.command.utils.MuteCommand;
+import lotnest.rika.command.utils.PingCommand;
+import lotnest.rika.command.student.WelcomeCommand;
 import lotnest.rika.configuration.ConfigProperty;
 import lotnest.rika.configuration.IdProperty;
-import lotnest.rika.util.CommandUtil;
+import lotnest.rika.utils.CommandUtils;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -39,19 +40,25 @@ public class CommandManager extends ListenerAdapter {
         commandChannelIds.add(IdProperty.TESTING_CHANNEL);
         commandChannelIds.add(IdProperty.VERIFICATION_CHANNEL);
 
+        // Student
         commands.add(new WelcomeCommand());
         commands.add(new GroupCommand());
         commands.add(new GroupsCommand());
+        commands.add(new PlanCommand());
+
+        // Fun
         commands.add(new CatCommand());
         commands.add(new DogCommand());
         commands.add(new ITEmployeeCommand());
+
+        // Utils
         commands.add(new PingCommand());
         commands.add(new MuteCommand());
     }
 
-    public CommandInfo getCommandInfo(final @NotNull GuildMessageReceivedEvent event) {
-        final Message message = event.getMessage();
-        final String[] commandArguments = CommandUtil.getArguments(message);
+    public CommandInfo getCommandInfo(@NotNull GuildMessageReceivedEvent event) {
+        Message message = event.getMessage();
+        String[] commandArguments = CommandUtils.getArguments(message);
 
         return new CommandInfo(
                 event.getGuild(),
@@ -62,27 +69,27 @@ public class CommandManager extends ListenerAdapter {
         );
     }
 
-    public boolean isCommandChannel(final @NotNull MessageChannel channel) {
+    public boolean isCommandChannel(@NotNull MessageChannel channel) {
         return commandChannelIds.contains(channel.getId());
     }
 
-    public Set<Command> getCommandsByType(final @NotNull CommandType commandType) {
+    public Set<Command> getCommandsByType(@NotNull CommandType commandType) {
         return commands.stream()
                 .filter(command -> command.getCommandType().equals(commandType))
                 .collect(Collectors.toSet());
     }
 
     @Override
-    public void onGuildMessageReceived(final @NotNull GuildMessageReceivedEvent event) {
-        final String message = event.getMessage().getContentRaw();
-        final Member member = event.getMember();
+    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
+        String message = event.getMessage().getContentRaw();
+        Member member = event.getMember();
 
         if (member == null || member.getUser().isBot()) {
             return;
         }
 
         if (message.startsWith(ConfigProperty.PREFIX)) {
-            final CommandInfo commandInfo = getCommandInfo(event);
+            CommandInfo commandInfo = getCommandInfo(event);
             if (commandInfo.getExecutor() == null) {
                 return;
             }

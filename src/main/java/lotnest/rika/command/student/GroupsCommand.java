@@ -5,8 +5,8 @@ import lotnest.rika.command.CommandInfo;
 import lotnest.rika.command.CommandType;
 import lotnest.rika.configuration.CommandProperty;
 import lotnest.rika.configuration.MessageProperty;
-import lotnest.rika.util.MessageUtil;
-import lotnest.rika.util.RoleUtil;
+import lotnest.rika.utils.MessageUtils;
+import lotnest.rika.utils.RoleUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import org.jetbrains.annotations.NotNull;
@@ -27,12 +27,12 @@ public class GroupsCommand extends Command {
     }
 
     @Override
-    public void execute(final @NotNull CommandInfo commandInfo) {
-        final EmbedBuilder embedBuilder = MessageUtil.getCommandEmbedBuilder(commandInfo, getName());
-        final Guild guild = commandInfo.getGuild();
+    public void execute(@NotNull CommandInfo commandInfo) {
+        EmbedBuilder embedBuilder = MessageUtils.getCommandEmbedBuilder(commandInfo, getName());
+        Guild guild = commandInfo.getGuild();
 
         CompletableFuture.runAsync(() -> {
-            final AtomicInteger i = new AtomicInteger();
+            AtomicInteger i = new AtomicInteger();
 
             embedBuilder.appendDescription("\n" + MessageProperty.MOST_POPULAR_EXERCISE_GROUPS);
             RoleUtil.findRolesWithMemberCount(GroupCommand.EXERCISE_PATTERN, guild)
