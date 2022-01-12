@@ -28,7 +28,7 @@ The prefix used for all commands is `!`. Commands listed below are for public us
 
 | Command | Description |
 | ------------- | ------------------------------ |
-| `grupa <grupa|c|l>` | Choose your exercise and language group to get access to dedicated channels. |
+| `grupa <grupa>` | Choose your exercise and language group to get access to dedicated channels. |
 | `grupy` | Returns most popular exercise and language groups in descending order. |
 | `kot` | Sends a random cat image. |
 | `pies` | Sends a random dog image. |
