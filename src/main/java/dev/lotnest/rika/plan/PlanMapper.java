@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public class PlanMapper {
 
@@ -46,9 +45,7 @@ public class PlanMapper {
 
             String[] summary = lessonJson.getString("SUMMARY").split(" ");
             String lessonCode = summary[0];
-            LessonType lessonType = LessonType.parseFromText(summary[1])
-                    .orElse(findExamKeyword(summary)
-                            .orElse(LessonType.UNKNOWN));
+            LessonType lessonType = LessonType.parseFromText(summary[1]).orElse(findExamKeyword(summary));
 
             if (lessonType.equals(LessonType.EXERCISE)) {
                 lessonType = LessonType.parseFromText(summary[0]).orElse(LessonType.EXERCISE);
@@ -65,7 +62,7 @@ public class PlanMapper {
         return result;
     }
 
-    private Optional<LessonType> findExamKeyword(@NotNull String[] summary) {
+    private LessonType findExamKeyword(@NotNull String[] summary) {
         int examKeywordIndex = -1;
         for (int i = 0; i < summary.length; i++) {
             if (summary[i].equals(LessonType.EXAM.getIdentifyingKeyword())) {
@@ -74,10 +71,10 @@ public class PlanMapper {
         }
 
         if (examKeywordIndex == -1) {
-            return Optional.empty();
+            return LessonType.UNKNOWN;
         }
 
-        return Optional.of(LessonType.EXAM);
+        return LessonType.EXAM;
     }
 
     @NotNull

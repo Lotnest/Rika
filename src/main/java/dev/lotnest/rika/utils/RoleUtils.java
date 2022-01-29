@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class RoleUtil {
+public class RoleUtils {
 
-    private RoleUtil() {
+    private RoleUtils() {
     }
 
     public static @NotNull List<Role> findRoles(@NotNull String regex, @NotNull Guild guild) {

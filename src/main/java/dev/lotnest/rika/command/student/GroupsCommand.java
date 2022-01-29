@@ -1,7 +1,7 @@
 package dev.lotnest.rika.command.student;
 
 import dev.lotnest.rika.configuration.CommandConstants;
-import dev.lotnest.rika.utils.RoleUtil;
+import dev.lotnest.rika.utils.RoleUtils;
 import dev.lotnest.rika.command.Command;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
@@ -35,14 +35,14 @@ public class GroupsCommand extends Command {
             AtomicInteger i = new AtomicInteger();
 
             embedBuilder.appendDescription("\n" + MessageConstants.MOST_POPULAR_EXERCISE_GROUPS);
-            RoleUtil.findRolesWithMemberCount(GroupCommand.EXERCISE_PATTERN, guild)
+            RoleUtils.findRolesWithMemberCount(GroupCommand.EXERCISE_PATTERN, guild)
                     .forEach((role, memberCount) -> embedBuilder.appendDescription("\n[" + i.incrementAndGet() + "] " + role.getName() + ": " + memberCount));
 
             i.set(0);
             embedBuilder.appendDescription("\n\n");
 
             embedBuilder.appendDescription(MessageConstants.MOST_POPULAR_LANGUAGE_GROUPS);
-            RoleUtil.findRolesWithMemberCount(GroupCommand.LANGUAGE_PATTERN, guild)
+            RoleUtils.findRolesWithMemberCount(GroupCommand.LANGUAGE_PATTERN, guild)
                     .forEach((role, memberCount) -> embedBuilder.appendDescription("\n[" + i.incrementAndGet() + "] " + role.getName() + ": " + memberCount));
 
             commandInfo.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
