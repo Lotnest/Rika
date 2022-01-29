@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lotnest</groupId>
+    <groupId>dev.lotnest</groupId>
     <artifactId>Rika</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.3</version>
     <name>Rika</name>
 
     <properties>
@@ -64,7 +64,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>lotnest.rika.Rika</mainClass>
+                            <mainClass>dev.lotnest.rika.Rika</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

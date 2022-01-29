@@ -470,49 +470,49 @@
         {
           "DTSTART": "20220212T070000Z",
           "DTEND": "20220212T083000Z",
-          "SUMMARY": "SKJ  Smyk Adam s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "SKJ egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220212T110000Z",
           "DTEND": "20220212T123000Z",
-          "SUMMARY": "WDZ  Cieciora Małgorzata s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "WDZ egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220213T110000Z",
           "DTEND": "20220213T140000Z",
-          "SUMMARY": "RBD  Matejewski Krzysztof s.A/357 egzamin s. A/357",
+          "SUMMARY": "RBD egzamin s. A/357",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220213T141500Z",
           "DTEND": "20220213T154500Z",
-          "SUMMARY": "MAD + MAD internet  Kacprzak Magdalena s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "MAD egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220219T070000Z",
           "DTEND": "20220219T083000Z",
-          "SUMMARY": "SKJ  Smyk Adam s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "SKJ egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220219T110000Z",
           "DTEND": "20220219T123000Z",
-          "SUMMARY": "WDZ  Cieciora Małgorzata s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "WDZ egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220220T110000Z",
           "DTEND": "20220220T140000Z",
-          "SUMMARY": "RBD  Matejewski Krzysztof s.A/357 egzamin s. A/357",
+          "SUMMARY": "RBD egzamin s. A/357",
           "CATEGORIES": "PLAN-PJWSTK"
         },
         {
           "DTSTART": "20220220T141500Z",
           "DTEND": "20220220T154500Z",
-          "SUMMARY": "MAD + MAD internet  Kacprzak Magdalena s.B/1 Aula Główna egzamin s. B/1 Aula Główna",
+          "SUMMARY": "MAD egzamin s. B/1 Aula Główna",
           "CATEGORIES": "PLAN-PJWSTK"
         }
       ]
