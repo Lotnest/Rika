@@ -43,4 +43,9 @@
     <entry key="command-no-permission">Nie masz uprawnień do użycia tej komendy.</entry>
     <entry key="muted-role-name">Wyciszony</entry>
     <entry key="work-in-progress">Prace w toku, spróbuj ponownie później.</entry>
+    <entry key="lesson-subject">**Przedmiot:**</entry>
+    <entry key="lesson-type">**Typ zajęć:**</entry>
+    <entry key="lesson-start-time">**Czas rozpoczęcia:**</entry>
+    <entry key="lesson-end-time">**Czas zakończenia:**</entry>
+    <entry key="lesson-room">**Sala:**</entry>
 </properties>

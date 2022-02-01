@@ -1,10 +1,7 @@
 package dev.lotnest.rika.configuration;
 
-import lombok.Getter;
-
 import static dev.lotnest.rika.Rika.MESSAGES;
 
-@Getter
 public class MessageConstants {
 
     public static final String ACTIVITY = MESSAGES.getProperty("activity");
@@ -43,6 +40,11 @@ public class MessageConstants {
     public static final String COMMAND_NO_PERMISSION = MESSAGES.getProperty("command-no-permission");
     public static final String MUTED_ROLE_NAME = MESSAGES.getProperty("muted-role-name");
     public static final String WORK_IN_PROGRESS = MESSAGES.getProperty("work-in-progress");
+    public static final String LESSON_SUBJECT = MESSAGES.getProperty("lesson-subject");
+    public static final String LESSON_TYPE = MESSAGES.getProperty("lesson-type");
+    public static final String LESSON_START_TIME = MESSAGES.getProperty("lesson-start-time");
+    public static final String LESSON_END_TIME = MESSAGES.getProperty("lesson-end-time");
+    public static final String LESSON_ROOM = MESSAGES.getProperty("lesson-room");
 
     private MessageConstants() {
     }

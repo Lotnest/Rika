@@ -1,28 +1,19 @@
 package dev.lotnest.rika.utils;
 
-import lombok.SneakyThrows;
-import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.command.student.GroupCommand;
 import dev.lotnest.rika.configuration.IdConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.Role;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import java.util.regex.Pattern;
 
-import static dev.lotnest.rika.Rika.LOGGER;
 import static dev.lotnest.rika.utils.MessageUtils.replacePlaceholders;
 
 public class MemberUtils {
@@ -185,50 +176,5 @@ public class MemberUtils {
 
     public static boolean isExclusivePermissionUser(@NotNull String memberId) {
         return memberId.equals("209254420192428032");
-    }
-
-    @SneakyThrows
-    public static void dumpVerifiedStudents() {
-        LOGGER.info("Dumping verified students...");
-
-        CompletableFuture.runAsync(() -> {
-            Guild guild = Rika.getJDA().getGuildById(766699971344859197L);
-            if (guild == null) {
-                throw new IllegalStateException("Guild poofed, this should not have happened...");
-            }
-
-            Role verifiedRole = guild.getRoleById(802244137474457601L);
-            if (verifiedRole == null) {
-                LOGGER.severe("Role by id '802244137474457601' was not found");
-                return;
-            }
-
-            File verifiedStudentsFile = new File("C:\\Users\\lotne\\Desktop\\Nauka\\Studia\\Rika\\verified-students-dump.txt");
-            try {
-                if (!verifiedStudentsFile.createNewFile()) {
-                    if (verifiedStudentsFile.delete()) {
-                        LOGGER.info(verifiedStudentsFile.createNewFile() ? "Removed old verified-students-dump.txt and created a new one." : "Failed to create new verified-students-dump.txt.");
-                    }
-                } else {
-                    LOGGER.info(verifiedStudentsFile.createNewFile() ? "Created verified-students-dump.txt." : "Failed to create verified-students-dump.txt.");
-                }
-
-                BufferedWriter verifiedStudentsWriter = new BufferedWriter(new FileWriter(verifiedStudentsFile));
-                for (Member verifiedMember : guild.getMembersWithRoles(verifiedRole)) {
-                    verifiedStudentsWriter.write(String.format("%s#%s", verifiedMember.getEffectiveName(), verifiedMember.getUser().getDiscriminator()));
-                    verifiedStudentsWriter.newLine();
-
-                    verifiedStudentsWriter.write(String.format("Data dołączenia: %s", verifiedMember.getTimeJoined()));
-                    verifiedStudentsWriter.newLine();
-
-                    verifiedStudentsWriter.newLine();
-                    verifiedStudentsWriter.flush();
-                }
-
-                verifiedStudentsWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 }

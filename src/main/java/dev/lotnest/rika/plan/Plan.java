@@ -1,9 +1,9 @@
 package dev.lotnest.rika.plan;
 
+import dev.lotnest.rika.plan.lesson.AbstractLesson;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import dev.lotnest.rika.plan.lesson.AbstractLesson;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;

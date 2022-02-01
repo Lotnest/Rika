@@ -2,8 +2,8 @@ package dev.lotnest.rika.manager;
 
 import dev.lotnest.rika.configuration.IdConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
-import dev.lotnest.rika.utils.MessageUtils;
 import dev.lotnest.rika.utils.CommandUtils;
+import dev.lotnest.rika.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -25,55 +25,55 @@ public class StudentManager extends ListenerAdapter {
     public static final Pattern STUDENT_PATTERN = Pattern.compile(MessageConstants.STUDENT_REGEX);
 
     @Override
-    public void onGuildMemberJoin(final @NotNull GuildMemberJoinEvent event) {
-        final Guild guild = event.getGuild();
-        final MessageChannel channel = guild.getTextChannelById(IdConstants.JOIN_LEAVE_MESSAGES_CHANNEL);
+    public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
+        Guild guild = event.getGuild();
+        MessageChannel channel = guild.getTextChannelById(IdConstants.JOIN_LEAVE_MESSAGES_CHANNEL);
         if (channel == null) {
             return;
         }
 
-        final Member member = event.getMember();
-        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
+        Member member = event.getMember();
+        EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(MessageUtils.replacePlaceholders(MessageConstants.NEW_STUDENT_TITLE, guild.getMemberCount()));
         embedBuilder.setDescription(MessageConstants.NEW_STUDENT_DESCRIPTION);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     @Override
-    public void onGuildMemberRemove(final @NotNull GuildMemberRemoveEvent event) {
-        final Guild guild = event.getGuild();
-        final MessageChannel channel = guild.getTextChannelById(IdConstants.JOIN_LEAVE_MESSAGES_CHANNEL);
+    public void onGuildMemberRemove(@NotNull GuildMemberRemoveEvent event) {
+        Guild guild = event.getGuild();
+        MessageChannel channel = guild.getTextChannelById(IdConstants.JOIN_LEAVE_MESSAGES_CHANNEL);
         if (channel == null) {
             return;
         }
 
-        final Member member = event.getMember();
+        Member member = event.getMember();
         if (member == null) {
             return;
         }
 
-        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
+        EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(MessageUtils.replacePlaceholders(MessageConstants.STUDENT_LEFT_TITLE, guild.getMemberCount()));
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     @Override
-    public void onGuildMemberUpdateBoostTime(final @NotNull GuildMemberUpdateBoostTimeEvent event) {
-        final Guild guild = event.getGuild();
-        final MessageChannel channel = guild.getTextChannelById(IdConstants.BOOST_MESSAGES_CHANNEL);
+    public void onGuildMemberUpdateBoostTime(@NotNull GuildMemberUpdateBoostTimeEvent event) {
+        Guild guild = event.getGuild();
+        MessageChannel channel = guild.getTextChannelById(IdConstants.BOOST_MESSAGES_CHANNEL);
         if (channel == null) {
             return;
         }
 
-        final Member member = event.getMember();
-        final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
+        Member member = event.getMember();
+        EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
         embedBuilder.setTitle(MessageUtils.replacePlaceholders(MessageConstants.BOOST_MESSAGE_TITLE, guild.getBoostCount()));
         embedBuilder.setDescription(MessageConstants.BOOST_MESSAGE_DESCRIPTION);
         channel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     @Override
-    public void onGuildMessageReceived(final @NotNull GuildMessageReceivedEvent event) {
+    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
         CommandUtils.getCommandChannel(event).ifPresent(map -> map.forEach((channel, member) -> {
             if (!channel.getId().equals(IdConstants.VERIFICATION_CHANNEL)) {
                 return;
@@ -83,12 +83,12 @@ public class StudentManager extends ListenerAdapter {
                 return;
             }
 
-            final Guild guild = event.getGuild();
-            final Role studentRole = guild.getRoleById(IdConstants.STUDENT_ROLE);
-            final EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
-            final List<Role> memberRoles = member.getRoles();
-            final Role verificatonFailedRole = guild.getRoleById(IdConstants.VERIFICATION_FAILED_ROLE);
-            final Message message = event.getMessage();
+            Guild guild = event.getGuild();
+            Role studentRole = guild.getRoleById(IdConstants.STUDENT_ROLE);
+            EmbedBuilder embedBuilder = MessageUtils.getDefaultEmbedBuilder(member);
+            List<Role> memberRoles = member.getRoles();
+            Role verificatonFailedRole = guild.getRoleById(IdConstants.VERIFICATION_FAILED_ROLE);
+            Message message = event.getMessage();
 
             if (memberRoles.contains(verificatonFailedRole)) {
                 return;
@@ -119,7 +119,7 @@ public class StudentManager extends ListenerAdapter {
 
                         embedBuilder.setDescription(MessageConstants.VERIFIED_SUCCESSFULLY);
                         message.delete().queue();
-                    } catch (final IllegalStateException e) {
+                    } catch (IllegalStateException e) {
                         message.delete().queue();
                     }
                 }

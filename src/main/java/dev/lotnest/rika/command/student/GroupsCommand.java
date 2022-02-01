@@ -1,12 +1,12 @@
 package dev.lotnest.rika.command.student;
 
-import dev.lotnest.rika.configuration.CommandConstants;
-import dev.lotnest.rika.utils.RoleUtils;
 import dev.lotnest.rika.command.Command;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
+import dev.lotnest.rika.configuration.CommandConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
 import dev.lotnest.rika.utils.MessageUtils;
+import dev.lotnest.rika.utils.RoleUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import org.jetbrains.annotations.NotNull;
