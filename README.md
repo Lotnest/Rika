@@ -34,3 +34,4 @@ The prefix used for all commands is `!`. Commands listed below are for public us
 | `pies` | Sends a random dog image. |
 | `pracownikit` | Find out what kind of IT employee you really are. |
 | `ping` | Returns the gateway ping in milliseconds. |
+| `plan` | Shows the next lesson information according to the schedule. |
