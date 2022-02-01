@@ -23,8 +23,8 @@ public class PingCommand extends Command {
     }
 
     @Override
-    public void execute(final @NotNull CommandInfo commandInfo) {
-        final EmbedBuilder embedBuilder = MessageUtils.getCommandEmbedBuilder(commandInfo, getName());
+    public void execute(@NotNull CommandInfo commandInfo) {
+        EmbedBuilder embedBuilder = MessageUtils.getCommandEmbedBuilder(commandInfo, getName());
         embedBuilder.setDescription(MessageUtils.replacePlaceholders(MessageConstants.PING_DESCRIPTION, Rika.getJDA().getGatewayPing()));
         commandInfo.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
         commandInfo.getMessage().delete().queue();

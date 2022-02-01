@@ -46,12 +46,7 @@ public class GroupCommand extends Command {
         String group = commandInfo.getArgs()[1];
         Member executor = commandInfo.getExecutor();
 
-        MemberUtils.findGroupRoleAndAddToMember(
-                group,
-                executor,
-                embedBuilder,
-                channel
-        );
+        MemberUtils.findGroupRoleAndAddToMember(group, executor, embedBuilder, channel);
         message.delete().queue();
     }
 }

@@ -27,17 +27,24 @@ public class MuteCommand extends Command {
     }
 
     @Override
-    public void execute(final @NotNull CommandInfo commandInfo) {
-        final EmbedBuilder embedBuilder = MessageUtils.getCommandEmbedBuilder(commandInfo, getName());
-        final MessageChannel channel = commandInfo.getChannel();
+    public void execute(@NotNull CommandInfo commandInfo) {
+        EmbedBuilder embedBuilder = MessageUtils.getCommandEmbedBuilder(commandInfo, getName());
+        MessageChannel channel = commandInfo.getChannel();
 
         if (MemberUtils.isModerator(commandInfo.getExecutor(), channel)) {
-            final List<Member> mentionedMembers = commandInfo.getMessage().getMentionedMembers();
+            List<Member> mentionedMembers = commandInfo.getMessage().getMentionedMembers();
             if (commandInfo.getArgs().length < 2 || mentionedMembers.isEmpty()) {
                 embedBuilder.setDescription(MessageConstants.NO_USER_TO_MUTE);
             } else {
-                MemberUtils.findRoleAndAddToMember(MessageConstants.MUTED_ROLE_NAME, mentionedMembers.get(0), MessageConstants.USER_MUTED, MessageConstants.ROLE_NOT_FOUND, MessageConstants.USER_ALREADY_MUTED, embedBuilder, channel);
+                MemberUtils.findRoleAndAddToMember(MessageConstants.MUTED_ROLE_NAME,
+                        mentionedMembers.get(0),
+                        MessageConstants.USER_MUTED,
+                        MessageConstants.ROLE_NOT_FOUND,
+                        MessageConstants.USER_ALREADY_MUTED,
+                        embedBuilder,
+                        channel);
             }
+
             channel.sendMessageEmbeds(embedBuilder.build()).queue();
             commandInfo.getMessage().delete().queue();
         }

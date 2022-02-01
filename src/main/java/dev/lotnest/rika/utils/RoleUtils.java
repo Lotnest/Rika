@@ -38,7 +38,10 @@ public class RoleUtils {
 
     public static @NotNull Map<Role, Integer> findRolesWithMemberCount(@NotNull Pattern pattern, @NotNull Guild guild) {
         Map<Role, Integer> rolesWithMemberCount = new HashMap<>();
-        findRoles(pattern, guild).forEach(role -> rolesWithMemberCount.put(role, guild.getMembersWithRoles(role).size()));
+
+        findRoles(pattern, guild)
+                .forEach(role -> rolesWithMemberCount.put(role, guild.getMembersWithRoles(role).size()));
+
         return rolesWithMemberCount.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .limit(10)
