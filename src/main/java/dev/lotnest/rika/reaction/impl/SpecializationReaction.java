@@ -14,14 +14,20 @@ public class SpecializationReaction extends Reaction {
     }
 
     @Override
-    public void handleReactionAdd(final @NotNull ReactionInfo reactionInfo) {
-        SpecializationType.fromEmoji(reactionInfo.getEmoji())
-                .ifPresent(specializationType -> specializationType.addRole(reactionInfo.getMemberReacted()));
+    public void handleReactionAdd(@NotNull ReactionInfo reactionInfo) {
+        String emoji = reactionInfo.getEmoji();
+        if (emoji != null) {
+            SpecializationType.fromEmoji(emoji)
+                    .ifPresent(specializationType -> specializationType.addRole(reactionInfo.getMemberReacted()));
+        }
     }
 
     @Override
-    public void handleReactionRemove(final @NotNull ReactionInfo reactionInfo) {
-        SpecializationType.fromEmoji(reactionInfo.getEmoji())
-                .ifPresent(specializationType -> specializationType.removeRole(reactionInfo.getMemberReacted()));
+    public void handleReactionRemove(@NotNull ReactionInfo reactionInfo) {
+        String emoji = reactionInfo.getEmoji();
+        if (emoji != null) {
+            SpecializationType.fromEmoji(emoji)
+                    .ifPresent(specializationType -> specializationType.removeRole(reactionInfo.getMemberReacted()));
+        }
     }
 }

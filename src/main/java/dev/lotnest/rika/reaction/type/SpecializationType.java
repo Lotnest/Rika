@@ -2,14 +2,14 @@ package dev.lotnest.rika.reaction.type;
 
 import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.utils.MemberUtils;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public enum SpecializationType {
 
@@ -28,8 +28,8 @@ public enum SpecializationType {
     private final String roleId;
 
     @NotNull
-    public static Optional<SpecializationType> fromEmoji(final @NotNull String emoji) {
-        for (final SpecializationType specializationType : values()) {
+    public static Optional<SpecializationType> fromEmoji(@NotNull String emoji) {
+        for (SpecializationType specializationType : values()) {
             if (specializationType.getUnicode().equals(emoji)) {
                 return Optional.of(specializationType);
             }
@@ -37,11 +37,11 @@ public enum SpecializationType {
         return Optional.empty();
     }
 
-    public void addRole(final @NotNull Member member) {
+    public void addRole(@NotNull Member member) {
         MemberUtils.addRole(member, roleId);
     }
 
-    public void removeRole(final @NotNull Member member) {
+    public void removeRole(@NotNull Member member) {
         MemberUtils.removeRole(member, roleId);
     }
 }

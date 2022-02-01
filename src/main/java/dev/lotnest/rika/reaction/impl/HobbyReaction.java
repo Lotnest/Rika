@@ -14,14 +14,20 @@ public class HobbyReaction extends Reaction {
     }
 
     @Override
-    public void handleReactionAdd(final @NotNull ReactionInfo reactionInfo) {
-        HobbyType.fromEmoji(reactionInfo.getEmoji())
-                .ifPresent(hobbyType -> hobbyType.addRole(reactionInfo.getMemberReacted()));
+    public void handleReactionAdd(@NotNull ReactionInfo reactionInfo) {
+        String emoji = reactionInfo.getEmoji();
+        if (emoji != null) {
+            HobbyType.fromEmoji(emoji)
+                    .ifPresent(hobbyType -> hobbyType.addRole(reactionInfo.getMemberReacted()));
+        }
     }
 
     @Override
-    public void handleReactionRemove(final @NotNull ReactionInfo reactionInfo) {
-        HobbyType.fromEmoji(reactionInfo.getEmoji())
-                .ifPresent(hobbyType -> hobbyType.removeRole(reactionInfo.getMemberReacted()));
+    public void handleReactionRemove(@NotNull ReactionInfo reactionInfo) {
+        String emoji = reactionInfo.getEmoji();
+        if (emoji != null) {
+            HobbyType.fromEmoji(emoji)
+                    .ifPresent(hobbyType -> hobbyType.removeRole(reactionInfo.getMemberReacted()));
+        }
     }
 }

@@ -1,12 +1,12 @@
 package dev.lotnest.rika.manager;
 
 import dev.lotnest.rika.configuration.IdConstants;
+import dev.lotnest.rika.reaction.Reaction;
+import dev.lotnest.rika.reaction.ReactionInfo;
 import dev.lotnest.rika.reaction.impl.HobbyReaction;
 import dev.lotnest.rika.reaction.impl.SpecializationReaction;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import dev.lotnest.rika.reaction.Reaction;
-import dev.lotnest.rika.reaction.ReactionInfo;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.react.GenericGuildMessageReactionEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
@@ -32,7 +32,7 @@ public class ReactionManager extends ListenerAdapter {
         reactions.add(new HobbyReaction());
     }
 
-    public ReactionInfo getReactionInfo(final @NotNull GenericGuildMessageReactionEvent event) {
+    public ReactionInfo getReactionInfo(@NotNull GenericGuildMessageReactionEvent event) {
         return new ReactionInfo(
                 event.getGuild(),
                 event.getMember(),
@@ -42,20 +42,20 @@ public class ReactionManager extends ListenerAdapter {
         );
     }
 
-    public boolean isReactionMessage(final @NotNull String messageId) {
+    public boolean isReactionMessage(@NotNull String messageId) {
         return reactionMessageIds.contains(messageId);
     }
 
     @Override
-    public void onGenericGuildMessageReaction(final @NotNull GenericGuildMessageReactionEvent event) {
-        final ReactionInfo reactionInfo = getReactionInfo(event);
-        final Member member = reactionInfo.getMemberReacted();
+    public void onGenericGuildMessageReaction(@NotNull GenericGuildMessageReactionEvent event) {
+        ReactionInfo reactionInfo = getReactionInfo(event);
+        Member member = reactionInfo.getMemberReacted();
         if (member == null || member.getUser().isBot()) {
             return;
         }
 
-        final String messageId = reactionInfo.getMessageId();
-        if (!isReactionMessage(messageId)) {
+        String messageId = reactionInfo.getMessageId();
+        if (messageId == null || !isReactionMessage(messageId)) {
             return;
         }
 

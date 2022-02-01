@@ -1,10 +1,7 @@
 package dev.lotnest.rika.configuration;
 
-import lombok.Getter;
-
 import static dev.lotnest.rika.Rika.IDS;
 
-@Getter
 public class IdConstants {
 
     public static final String JOIN_LEAVE_MESSAGES_CHANNEL = IDS.getProperty("welcome-leave-messages-channel");

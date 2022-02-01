@@ -2,14 +2,14 @@ package dev.lotnest.rika.reaction.type;
 
 import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.utils.MemberUtils;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public enum HobbyType {
 
@@ -26,14 +26,15 @@ public enum HobbyType {
     DRAWING("\uD83C\uDFA8", Rika.IDS.getProperty("hobby-drawing-role")),
     ASTRONOMY("⭐", Rika.IDS.getProperty("hobby-astronomy-role")),
     ANIME("\uD83C\uDDEF\uD83C\uDDF5", Rika.IDS.getProperty("hobby-anime-role")),
-    DANCE("\uD83D\uDC83", Rika.IDS.getProperty("hobby-dance-role"));
+    DANCE("\uD83D\uDC83", Rika.IDS.getProperty("hobby-dance-role")),
+    COOKING("\uD83E\uDDD1\u200D\uD83C\uDF73", Rika.IDS.getProperty("hobby-cooking-role"));
 
     private final String unicode;
     private final String roleId;
 
     @NotNull
-    public static Optional<HobbyType> fromEmoji(final @NotNull String emoji) {
-        for (final HobbyType hobbyType : values()) {
+    public static Optional<HobbyType> fromEmoji(@NotNull String emoji) {
+        for (HobbyType hobbyType : values()) {
             if (hobbyType.getUnicode().equals(emoji)) {
                 return Optional.of(hobbyType);
             }
@@ -41,11 +42,11 @@ public enum HobbyType {
         return Optional.empty();
     }
 
-    public void addRole(final @NotNull Member member) {
+    public void addRole(@NotNull Member member) {
         MemberUtils.addRole(member, roleId);
     }
 
-    public void removeRole(final @NotNull Member member) {
+    public void removeRole(@NotNull Member member) {
         MemberUtils.removeRole(member, roleId);
     }
 }

@@ -1,8 +1,8 @@
 package dev.lotnest.rika.utils;
 
+import dev.lotnest.rika.configuration.IdConstants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import dev.lotnest.rika.configuration.IdConstants;
 import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
 
