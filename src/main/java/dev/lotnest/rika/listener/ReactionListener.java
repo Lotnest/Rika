@@ -1,4 +1,4 @@
-package dev.lotnest.rika.manager;
+package dev.lotnest.rika.listener;
 
 import dev.lotnest.rika.configuration.IdConstants;
 import dev.lotnest.rika.reaction.Reaction;
@@ -18,13 +18,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class ReactionManager extends ListenerAdapter {
+public class ReactionListener extends ListenerAdapter {
 
     private final Set<String> reactionMessageIds = new HashSet<>();
     private final Set<Reaction> reactions = new HashSet<>();
 
     @SneakyThrows
-    public ReactionManager() {
+    public ReactionListener() {
         reactionMessageIds.add(IdConstants.SPECIALIZATION_MESSAGE);
         reactionMessageIds.add(IdConstants.HOBBY_MESSAGE);
 

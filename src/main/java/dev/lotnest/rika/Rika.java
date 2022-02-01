@@ -2,9 +2,9 @@ package dev.lotnest.rika;
 
 import dev.lotnest.rika.configuration.ConfigConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
-import dev.lotnest.rika.manager.CommandManager;
-import dev.lotnest.rika.manager.ReactionManager;
-import dev.lotnest.rika.manager.StudentManager;
+import dev.lotnest.rika.listener.CommandListener;
+import dev.lotnest.rika.listener.ReactionListener;
+import dev.lotnest.rika.listener.StudentListener;
 import dev.lotnest.rika.plan.Plan;
 import dev.lotnest.rika.plan.PlanManager;
 import dev.lotnest.rika.plan.PlanMapper;
@@ -57,9 +57,9 @@ public class Rika {
         jdaBuilder.setBulkDeleteSplittingEnabled(false);
         jdaBuilder.setActivity(Activity.of(ConfigConstants.ACTIVITY_TYPE, MessageConstants.ACTIVITY));
         jda = jdaBuilder.addEventListeners(
-                        new StudentManager(),
-                        new CommandManager(),
-                        new ReactionManager())
+                        new StudentListener(),
+                        new CommandListener(),
+                        new ReactionListener())
                 .build();
         jda.awaitReady();
 

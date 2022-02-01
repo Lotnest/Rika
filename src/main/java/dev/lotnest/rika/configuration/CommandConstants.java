@@ -13,6 +13,7 @@ public class CommandConstants {
     public static final String IT_EMPLOYEE = COMMANDS.getProperty("it-employee", "pracownikit");
     public static final String MUTE = COMMANDS.getProperty("mute", "wycisz");
     public static final String PLAN = COMMANDS.getProperty("plan", "plan");
+    public static final String ITN = COMMANDS.getProperty("itn", "itn");
 
     private CommandConstants() {
     }

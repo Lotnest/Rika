@@ -1,4 +1,4 @@
-package dev.lotnest.rika.manager;
+package dev.lotnest.rika.listener;
 
 import dev.lotnest.rika.configuration.IdConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class StudentManager extends ListenerAdapter {
+public class StudentListener extends ListenerAdapter {
 
     public static final Pattern STUDENT_PATTERN = Pattern.compile(MessageConstants.STUDENT_REGEX);
 

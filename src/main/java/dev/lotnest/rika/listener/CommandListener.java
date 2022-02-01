@@ -1,4 +1,4 @@
-package dev.lotnest.rika.manager;
+package dev.lotnest.rika.listener;
 
 import dev.lotnest.rika.command.Command;
 import dev.lotnest.rika.command.CommandInfo;
@@ -6,6 +6,7 @@ import dev.lotnest.rika.command.CommandType;
 import dev.lotnest.rika.command.fun.CatCommand;
 import dev.lotnest.rika.command.fun.DogCommand;
 import dev.lotnest.rika.command.fun.ITEmployeeCommand;
+import dev.lotnest.rika.command.fun.ITNCommand;
 import dev.lotnest.rika.command.student.GroupCommand;
 import dev.lotnest.rika.command.student.GroupsCommand;
 import dev.lotnest.rika.command.student.PlanCommand;
@@ -29,13 +30,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
-public class CommandManager extends ListenerAdapter {
+public class CommandListener extends ListenerAdapter {
 
     private final Set<String> commandChannelIds = new HashSet<>();
     private final Set<Command> commands = new HashSet<>();
 
     @SneakyThrows
-    public CommandManager() {
+    public CommandListener() {
         commandChannelIds.add(IdConstants.COMMANDS_CHANNEL);
         commandChannelIds.add(IdConstants.TESTING_CHANNEL);
         commandChannelIds.add(IdConstants.VERIFICATION_CHANNEL);
@@ -50,6 +51,7 @@ public class CommandManager extends ListenerAdapter {
         commands.add(new CatCommand());
         commands.add(new DogCommand());
         commands.add(new ITEmployeeCommand());
+        commands.add(new ITNCommand());
 
         // Utils
         commands.add(new PingCommand());

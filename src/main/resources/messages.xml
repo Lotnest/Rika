@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <!-- @formatter:off -->
 <properties>
-    <entry key="activity">Kto zdaje, ten zdaje</entry>
+    <entry key="activity">#ITNklub</entry>
     <entry key="footer">Rika - Lotnest#1602</entry>
     <entry key="new-student-title">Nowy student (#{0})</entry>
     <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.</entry>
