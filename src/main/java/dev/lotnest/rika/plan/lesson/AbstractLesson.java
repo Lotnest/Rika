@@ -66,10 +66,10 @@ public abstract class AbstractLesson {
 
     @Override
     public String toString() {
-        return MessageConstants.LESSON_SUBJECT + " " + code
-                + MessageConstants.LESSON_TYPE + " " + type
-                + MessageConstants.LESSON_START_TIME + " " + startTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER)
-                + MessageConstants.LESSON_END_TIME + " " + endTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER)
+        return MessageConstants.LESSON_SUBJECT + " " + code + "\n"
+                + MessageConstants.LESSON_TYPE + " " + type + "\n"
+                + MessageConstants.LESSON_START_TIME + " " + startTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER) + "\n"
+                + MessageConstants.LESSON_END_TIME + " " + endTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER) + "\n"
                 + MessageConstants.LESSON_ROOM + " " + room;
     }
 }
