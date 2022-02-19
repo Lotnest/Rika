@@ -1,10 +1,10 @@
 package dev.lotnest.rika.plan.lesson;
 
-import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.configuration.MessageConstants;
 import dev.lotnest.rika.plan.lesson.impl.ExerciseLesson;
 import dev.lotnest.rika.plan.lesson.impl.LanguageLesson;
 import dev.lotnest.rika.plan.lesson.impl.LectureLesson;
+import dev.lotnest.rika.utils.TimeUtils;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -68,8 +68,8 @@ public abstract class AbstractLesson {
     public String toString() {
         return MessageConstants.LESSON_SUBJECT + " " + code + "\n"
                 + MessageConstants.LESSON_TYPE + " " + type + "\n"
-                + MessageConstants.LESSON_START_TIME + " " + startTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER) + "\n"
-                + MessageConstants.LESSON_END_TIME + " " + endTime.format(Rika.DEFAULT_DATE_TIME_FORMATTER) + "\n"
+                + MessageConstants.LESSON_START_TIME + " " + startTime.format(TimeUtils.DEFAULT_DATE_TIME_FORMATTER) + "\n"
+                + MessageConstants.LESSON_END_TIME + " " + endTime.format(TimeUtils.DEFAULT_DATE_TIME_FORMATTER) + "\n"
                 + MessageConstants.LESSON_ROOM + " " + room;
     }
 }

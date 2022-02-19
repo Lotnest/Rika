@@ -48,7 +48,7 @@ public class MessageUtils {
     }
 
     public static void sendNextLessonMessage(@NotNull CommandInfo commandInfo) {
-        sendLessonMessage(commandInfo, Rika.PLAN_MANAGER.get(0).getNextLesson());
+        sendLessonMessage(commandInfo, Rika.getPlanManager().getPlan(0).getNextLesson());
     }
 
     public static void sendLessonMessage(@NotNull CommandInfo commandInfo, @NotNull AbstractLesson lesson) {

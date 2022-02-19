@@ -34,7 +34,7 @@ public class PlanManager {
         return plans.remove(plan);
     }
 
-    public Plan get(int index) {
+    public Plan getPlan(int index) {
         return plans.get(index);
     }
 }

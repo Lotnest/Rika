@@ -1,8 +1,8 @@
 package dev.lotnest.rika.plan;
 
-import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.plan.lesson.AbstractLesson;
 import dev.lotnest.rika.plan.lesson.LessonType;
+import dev.lotnest.rika.utils.TimeUtils;
 import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -40,8 +40,8 @@ public class PlanMapper {
         for (int i = 0; i < vEvents.length(); i++) {
             JSONObject lessonJson = vEvents.getJSONObject(i);
 
-            LocalDateTime dtStart = LocalDateTime.parse(lessonJson.getString("DTSTART"), Rika.PLAN_DATE_TIME_FORMATTER).plusHours(1);
-            LocalDateTime dtEnd = LocalDateTime.parse(lessonJson.getString("DTEND"), Rika.PLAN_DATE_TIME_FORMATTER).plusHours(1);
+            LocalDateTime dtStart = LocalDateTime.parse(lessonJson.getString("DTSTART"), TimeUtils.PLAN_DATE_TIME_FORMATTER).plusHours(1);
+            LocalDateTime dtEnd = LocalDateTime.parse(lessonJson.getString("DTEND"), TimeUtils.PLAN_DATE_TIME_FORMATTER).plusHours(1);
 
             String[] summary = lessonJson.getString("SUMMARY").split(" ");
             String lessonCode = summary[0];
