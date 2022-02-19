@@ -67,7 +67,7 @@ public class Rika {
     public static void loadCurrentSemesterPlan() {
         PlanMapper planMapper = new PlanMapper();
         Plan currentSemesterPlan = planMapper.mapFromSemester(CURRENT_SEMESTER);
-        PLAN_MANAGER.addPlan(currentSemesterPlan);
+        getPlanManager().addPlan(currentSemesterPlan);
     }
 
     @SneakyThrows
