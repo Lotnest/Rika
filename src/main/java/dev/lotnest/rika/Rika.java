@@ -9,6 +9,7 @@ import dev.lotnest.rika.plan.Plan;
 import dev.lotnest.rika.plan.PlanManager;
 import dev.lotnest.rika.plan.PlanMapper;
 import dev.lotnest.rika.plan.SemesterEnum;
+import dev.lotnest.rika.utils.MessageUtils;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -52,7 +53,7 @@ public class Rika {
     public static void buildJDA() {
         JDABuilder jdaBuilder = JDABuilder.create(System.getenv("TOKEN"), GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_EMOJIS, GatewayIntent.GUILD_MESSAGE_REACTIONS);
         jdaBuilder.disableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE, CacheFlag.CLIENT_STATUS, CacheFlag.ONLINE_STATUS);
-        jdaBuilder.setActivity(Activity.of(ConfigConstants.ACTIVITY_TYPE, MessageConstants.ACTIVITY));
+        jdaBuilder.setActivity(Activity.of(ConfigConstants.ACTIVITY_TYPE, MessageUtils.replacePlaceholders(MessageConstants.ACTIVITY, String.valueOf(Rika.CURRENT_SEMESTER.getNumber()))));
         JDA = jdaBuilder.addEventListeners(new StudentListener(), new CommandListener(), new ReactionListener())
                 .build();
     }

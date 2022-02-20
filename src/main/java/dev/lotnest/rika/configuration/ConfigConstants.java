@@ -7,7 +7,7 @@ import static dev.lotnest.rika.Rika.CONFIG;
 public class ConfigConstants {
 
     public static final String PREFIX = CONFIG.getProperty("prefix", "!");
-    public static final Activity.ActivityType ACTIVITY_TYPE = Activity.ActivityType.valueOf(CONFIG.getProperty("activity-type", Activity.ActivityType.LISTENING.toString()));
+    public static final Activity.ActivityType ACTIVITY_TYPE = Activity.ActivityType.valueOf(CONFIG.getProperty("activity-type", Activity.ActivityType.COMPETING.toString()));
 
     private ConfigConstants() {
     }
