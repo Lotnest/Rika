@@ -28,7 +28,7 @@ public class Rika {
     public static final Properties COMMANDS = new Properties();
     public static final Color MAIN_COLOR = new Color(0, 184, 238);
     public static final Logger LOGGER = Logger.getLogger("Rika");
-    public static final SemesterEnum CURRENT_SEMESTER = SemesterEnum.THREE;
+    public static final SemesterEnum CURRENT_SEMESTER = SemesterEnum.FOUR;
 
     private static PlanManager PLAN_MANAGER;
     private static JDA JDA;

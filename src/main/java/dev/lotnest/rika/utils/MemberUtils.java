@@ -94,7 +94,7 @@ public class MemberUtils {
     public static void findGroupRoleAndAddToMember(@NotNull String group, @NotNull Member member, @NotNull EmbedBuilder embedBuilder, @NotNull MessageChannel channel) {
         Pattern pattern = GroupCommand.EXERCISE_PATTERN.matcher(group).matches() ? GroupCommand.EXERCISE_PATTERN : GroupCommand.LANGUAGE_PATTERN.matcher(group).matches() ? GroupCommand.LANGUAGE_PATTERN : null;
         if (pattern == null) {
-            embedBuilder.setDescription(MessageConstants.GROUP_COMMAND_INVALID_TYPE);
+            embedBuilder.setDescription(MessageConstants.GROUP_COMMAND_INVALID);
             channel.sendMessageEmbeds(embedBuilder.build()).queue();
             return;
         }
@@ -103,10 +103,10 @@ public class MemberUtils {
                 pattern,
                 group,
                 member,
-                MessageConstants.GROUP_COMMAND_ADDED_EXERCISE,
-                MessageConstants.GROUP_COMMAND_EXERCISE_NOT_FOUND,
+                MessageConstants.GROUP_COMMAND_ADDED,
+                MessageConstants.GROUP_COMMAND_NOT_FOUND,
                 MessageConstants.GROUP_COMMAND_ALREADY_ASSIGNED,
-                MessageConstants.GROUP_COMMAND_CHANGED_EXERCISE,
+                MessageConstants.GROUP_COMMAND_CHANGED,
                 embedBuilder,
                 channel
         );

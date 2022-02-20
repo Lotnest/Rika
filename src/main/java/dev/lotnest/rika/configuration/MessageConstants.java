@@ -16,13 +16,10 @@ public class MessageConstants {
     public static final String GROUP_EXERCISE_REGEX = MESSAGES.getProperty("group-exercise-regex");
     public static final String GROUP_LANGUAGE_REGEX = MESSAGES.getProperty("group-language-regex");
     public static final String GROUP_COMMAND_ALREADY_ASSIGNED = MESSAGES.getProperty("group-command-already-assigned");
-    public static final String GROUP_COMMAND_ADDED_EXERCISE = MESSAGES.getProperty("group-command-added-exercise");
-    public static final String GROUP_COMMAND_CHANGED_EXERCISE = MESSAGES.getProperty("group-command-changed-exercise");
-    public static final String GROUP_COMMAND_ADDED_LANGUAGE = MESSAGES.getProperty("group-command-added-language");
-    public static final String GROUP_COMMAND_CHANGED_LANGUAGE = MESSAGES.getProperty("group-command-changed-language");
-    public static final String GROUP_COMMAND_INVALID_TYPE = MESSAGES.getProperty("group-command-invalid-type");
-    public static final String GROUP_COMMAND_EXERCISE_NOT_FOUND = MESSAGES.getProperty("group-command-exercise-not-found");
-    public static final String GROUP_COMMAND_LANGUAGE_NOT_FOUND = MESSAGES.getProperty("group-command-language-not-found");
+    public static final String GROUP_COMMAND_ADDED = MESSAGES.getProperty("group-command-added");
+    public static final String GROUP_COMMAND_CHANGED = MESSAGES.getProperty("group-command-changed");
+    public static final String GROUP_COMMAND_INVALID = MESSAGES.getProperty("group-command-invalid");
+    public static final String GROUP_COMMAND_NOT_FOUND = MESSAGES.getProperty("group-command-not-found");
     public static final String ALREADY_VERIFIED = MESSAGES.getProperty("already-verified");
     public static final String FAILED_TO_VERIFY = MESSAGES.getProperty("failed-to-verify");
     public static final String VERIFIED_SUCCESSFULLY = MESSAGES.getProperty("verified-successfully");

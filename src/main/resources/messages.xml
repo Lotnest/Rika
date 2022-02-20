@@ -14,13 +14,10 @@
     <entry key="group-exercise-regex">(\d){2}[Cc]</entry>
     <entry key="group-language-regex">(\d){3}[Ll]</entry>
     <entry key="group-command-already-assigned">Już jesteś w grupie {0}.</entry>
-    <entry key="group-command-added-exercise">Dodano grupę ćwiczeniową {0}.</entry>
-    <entry key="group-command-changed-exercise">Zmieniono grupę ćwiczeniową z {0} na {1}.</entry>
-    <entry key="group-command-added-language">Dodano grupę lektoratową {0}.</entry>
-    <entry key="group-command-changed-language">Zmieniono grupę lektoratową z {0} na {1}.</entry>
-    <entry key="group-command-invalid-type">Prawidłowe typy grup to: ćwiczeniowa (np. **16c**) oraz lektoratowa (np. **125l**).</entry>
-    <entry key="group-command-exercise-not-found">Grupa ćwiczeniowa {0} nie istnieje.</entry>
-    <entry key="group-command-language-not-found">Grupa lektoratowa {0} nie istnieje.</entry>
+    <entry key="group-command-added">Dodano grupę {0}.</entry>
+    <entry key="group-command-changed">Zmieniono grupę z {0} na {1}.</entry>
+    <entry key="group-command-invalid">Prawidłowe typy grup to: ćwiczeniowa (np. **16c**) oraz lektoratowa (np. **125l**).</entry>
+    <entry key="group-command-not-found">Grupa {0} nie istnieje.</entry>
     <entry key="verified-successfully">Udało nam się zweryfikować Ciebie jako studenta, dziękujemy! Nie trzymamy Twoich danych, usuwamy je od razu po przeprocesowaniu roli.</entry>
     <entry key="already-verified">Już zostałeś zweryfikowany jako student.</entry>
     <entry key="failed-to-verify">Niestety, nie udało nam się zweryfikować Ciebie jako studenta. Skontaktuj się z administracją.</entry>

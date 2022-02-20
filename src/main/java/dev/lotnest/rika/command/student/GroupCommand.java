@@ -37,7 +37,7 @@ public class GroupCommand extends Command {
         MessageChannel channel = commandInfo.getChannel();
 
         if (commandInfo.getArgs().length < 2) {
-            embedBuilder.setDescription(MessageConstants.GROUP_COMMAND_INVALID_TYPE);
+            embedBuilder.setDescription(MessageConstants.GROUP_COMMAND_INVALID);
             channel.sendMessageEmbeds(embedBuilder.build()).queue();
             message.delete().queue();
             return;
