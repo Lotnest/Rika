@@ -8,11 +8,13 @@ import dev.lotnest.rika.reaction.impl.SpecializationReaction;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.MessageReaction;
 import net.dv8tion.jda.api.events.message.guild.react.GenericGuildMessageReactionEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,14 +34,20 @@ public class ReactionListener extends ListenerAdapter {
         reactions.add(new HobbyReaction());
     }
 
+    @Nullable
     public ReactionInfo getReactionInfo(@NotNull GenericGuildMessageReactionEvent event) {
-        return new ReactionInfo(
-                event.getGuild(),
-                event.getMember(),
-                event.getMessageId(),
-                event.getReaction().getReactionEmote().getEmoji(),
-                event.getChannel()
-        );
+        MessageReaction.ReactionEmote reactionEmote = event.getReaction().getReactionEmote();
+        if (reactionEmote.isEmoji()) {
+            return new ReactionInfo(
+                    event.getGuild(),
+                    event.getMember(),
+                    event.getMessageId(),
+                    reactionEmote.getEmoji(),
+                    event.getChannel()
+            );
+        } else {
+            return null;
+        }
     }
 
     public boolean isReactionMessage(@NotNull String messageId) {
@@ -49,6 +57,10 @@ public class ReactionListener extends ListenerAdapter {
     @Override
     public void onGenericGuildMessageReaction(@NotNull GenericGuildMessageReactionEvent event) {
         ReactionInfo reactionInfo = getReactionInfo(event);
+        if (reactionInfo == null) {
+            return;
+        }
+
         Member member = reactionInfo.getMemberReacted();
         if (member == null || member.getUser().isBot()) {
             return;
