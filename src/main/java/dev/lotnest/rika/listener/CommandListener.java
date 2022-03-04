@@ -1,6 +1,6 @@
 package dev.lotnest.rika.listener;
 
-import dev.lotnest.rika.command.Command;
+import dev.lotnest.rika.command.AbstractCommand;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
 import dev.lotnest.rika.command.fun.CatCommand;
@@ -11,6 +11,7 @@ import dev.lotnest.rika.command.student.GroupCommand;
 import dev.lotnest.rika.command.student.GroupsCommand;
 import dev.lotnest.rika.command.student.PlanCommand;
 import dev.lotnest.rika.command.student.WelcomeCommand;
+import dev.lotnest.rika.command.utils.GakkoCommand;
 import dev.lotnest.rika.command.utils.MuteCommand;
 import dev.lotnest.rika.command.utils.PingCommand;
 import dev.lotnest.rika.configuration.ConfigConstants;
@@ -33,7 +34,7 @@ import java.util.stream.Collectors;
 public class CommandListener extends ListenerAdapter {
 
     private final Set<String> commandChannelIds = new HashSet<>();
-    private final Set<Command> commands = new HashSet<>();
+    private final Set<AbstractCommand> commands = new HashSet<>();
 
     @SneakyThrows
     public CommandListener() {
@@ -56,9 +57,10 @@ public class CommandListener extends ListenerAdapter {
         // Utils
         commands.add(new PingCommand());
         commands.add(new MuteCommand());
+        commands.add(new GakkoCommand());
     }
 
-    public CommandInfo getCommandInfo(@NotNull GuildMessageReceivedEvent event) {
+    public @NotNull CommandInfo getCommandInfo(@NotNull GuildMessageReceivedEvent event) {
         Message message = event.getMessage();
         String[] commandArguments = CommandUtils.getArguments(message);
 
@@ -75,7 +77,7 @@ public class CommandListener extends ListenerAdapter {
         return commandChannelIds.contains(channel.getId());
     }
 
-    public Set<Command> getCommandsByType(@NotNull CommandType commandType) {
+    public @NotNull Set<AbstractCommand> getCommandsByType(@NotNull CommandType commandType) {
         return commands.stream()
                 .filter(command -> command.getCommandType().equals(commandType))
                 .collect(Collectors.toSet());

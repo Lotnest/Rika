@@ -1,6 +1,6 @@
 package dev.lotnest.rika.command.utils;
 
-import dev.lotnest.rika.command.Command;
+import dev.lotnest.rika.command.AbstractCommand;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
 import dev.lotnest.rika.configuration.CommandConstants;
@@ -14,15 +14,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MuteCommand extends Command {
+public class MuteCommand extends AbstractCommand {
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return CommandConstants.MUTE;
     }
 
     @Override
-    public CommandType getCommandType() {
+    public @NotNull CommandType getCommandType() {
         return CommandType.UTILITY;
     }
 

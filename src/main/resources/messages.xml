@@ -45,4 +45,6 @@
     <entry key="lesson-start-time">**Czas rozpoczęcia:**</entry>
     <entry key="lesson-end-time">**Czas zakończenia:**</entry>
     <entry key="lesson-room">**Sala:**</entry>
+    <entry key="gakko-status-message-up">Gakko żyje! :blush:</entry>
+    <entry key="gakko-status-message-down">Gakko padło! :flushed:</entry>
 </properties>

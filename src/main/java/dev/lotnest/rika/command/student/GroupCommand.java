@@ -1,6 +1,6 @@
 package dev.lotnest.rika.command.student;
 
-import dev.lotnest.rika.command.Command;
+import dev.lotnest.rika.command.AbstractCommand;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
 import dev.lotnest.rika.configuration.CommandConstants;
@@ -15,18 +15,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Pattern;
 
-public class GroupCommand extends Command {
+public class GroupCommand extends AbstractCommand {
 
     public static final Pattern EXERCISE_PATTERN = Pattern.compile(MessageConstants.GROUP_EXERCISE_REGEX);
     public static final Pattern LANGUAGE_PATTERN = Pattern.compile(MessageConstants.GROUP_LANGUAGE_REGEX);
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return CommandConstants.GROUP;
     }
 
     @Override
-    public CommandType getCommandType() {
+    public @NotNull CommandType getCommandType() {
         return CommandType.STUDENT;
     }
 

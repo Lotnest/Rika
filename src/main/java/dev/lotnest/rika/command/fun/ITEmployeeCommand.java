@@ -1,6 +1,6 @@
 package dev.lotnest.rika.command.fun;
 
-import dev.lotnest.rika.command.Command;
+import dev.lotnest.rika.command.AbstractCommand;
 import dev.lotnest.rika.command.CommandInfo;
 import dev.lotnest.rika.command.CommandType;
 import dev.lotnest.rika.configuration.CommandConstants;
@@ -11,15 +11,15 @@ import org.jetbrains.annotations.NotNull;
 
 import static dev.lotnest.rika.utils.MessageUtils.replacePlaceholders;
 
-public class ITEmployeeCommand extends Command {
+public class ITEmployeeCommand extends AbstractCommand {
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return CommandConstants.IT_EMPLOYEE;
     }
 
     @Override
-    public CommandType getCommandType() {
+    public @NotNull CommandType getCommandType() {
         return CommandType.FUN;
     }
 

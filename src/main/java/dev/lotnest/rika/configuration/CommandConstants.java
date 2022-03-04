@@ -14,6 +14,7 @@ public class CommandConstants {
     public static final String MUTE = COMMANDS.getProperty("mute", "wycisz");
     public static final String PLAN = COMMANDS.getProperty("plan", "plan");
     public static final String ITN = COMMANDS.getProperty("itn", "itn");
+    public static final String GAKKO = COMMANDS.getProperty("gakko", "gakko");
 
     private CommandConstants() {
     }
