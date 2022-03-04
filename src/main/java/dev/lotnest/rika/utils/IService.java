@@ -1,7 +1,6 @@
 package dev.lotnest.rika.utils;
 
 import dev.lotnest.rika.configuration.MessageConstants;
-import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,7 +29,7 @@ public interface IService {
             return HTTP_CLIENT.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())
                     .thenApply(HttpResponse::body)
                     .thenApply(responseBody -> getJsonValue(responseBody, jsonKey))
-                    .get(20L, TimeUnit.SECONDS);
+                    .get(10L, TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
             return MessageConstants.SERVICE_ERROR_OCCURRED;
@@ -48,6 +47,8 @@ public interface IService {
             URL url = new URL(getServiceUrl());
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
+            httpURLConnection.setConnectTimeout(10000);
+            httpURLConnection.setReadTimeout(10000);
             return httpURLConnection.getResponseCode() == 200;
         } catch (Exception e) {
             return false;
