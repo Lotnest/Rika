@@ -1,8 +1,8 @@
 package dev.lotnest.rika.utils;
 
+import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.configuration.MessageConstants;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
@@ -21,7 +21,7 @@ public interface IService {
 
     @NotNull String getServiceUrl();
 
-    default String getJsonValue(@NotNull String jsonKey) {
+    default @NotNull String getJsonValue(@NotNull String jsonKey) {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create(getServiceUrl()))
                 .build();
@@ -37,8 +37,7 @@ public interface IService {
     }
 
     default @NotNull String getJsonValue(@NotNull String responseBody, @NotNull String jsonKey) {
-        JSONArray apiKeysJsonArray = new JSONArray(responseBody);
-        JSONObject apiKeysJsonObject = apiKeysJsonArray.getJSONObject(0);
+        JSONObject apiKeysJsonObject = new JSONObject(responseBody);
         return apiKeysJsonObject.getString(jsonKey);
     }
 
