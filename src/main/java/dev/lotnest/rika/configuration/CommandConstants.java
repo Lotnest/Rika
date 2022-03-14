@@ -15,6 +15,7 @@ public class CommandConstants {
     public static final String PLAN = COMMANDS.getProperty("plan", "plan");
     public static final String ITN = COMMANDS.getProperty("itn", "itn");
     public static final String GAKKO = COMMANDS.getProperty("gakko", "gakko");
+    public static final String ECLIPSE = COMMANDS.getProperty("eclipse", "eclipse");
 
     private CommandConstants() {
     }

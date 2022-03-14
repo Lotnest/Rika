@@ -11,6 +11,7 @@ import dev.lotnest.rika.command.student.GroupCommand;
 import dev.lotnest.rika.command.student.GroupsCommand;
 import dev.lotnest.rika.command.student.PlanCommand;
 import dev.lotnest.rika.command.student.WelcomeCommand;
+import dev.lotnest.rika.command.utils.EclipseCommand;
 import dev.lotnest.rika.command.utils.GakkoCommand;
 import dev.lotnest.rika.command.utils.MuteCommand;
 import dev.lotnest.rika.command.utils.PingCommand;
@@ -58,6 +59,7 @@ public class CommandListener extends ListenerAdapter {
         commands.add(new PingCommand());
         commands.add(new MuteCommand());
         commands.add(new GakkoCommand());
+        commands.add(new EclipseCommand());
     }
 
     public @NotNull CommandInfo getCommandInfo(@NotNull GuildMessageReceivedEvent event) {

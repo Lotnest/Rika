@@ -44,6 +44,7 @@ public class MessageConstants {
     public static final String LESSON_ROOM = MESSAGES.getProperty("lesson-room");
     public static final String GAKKO_STATUS_MESSAGE_UP = MESSAGES.getProperty("gakko-status-message-up");
     public static final String GAKKO_STATUS_MESSAGE_DOWN = MESSAGES.getProperty("gakko-status-message-down");
+    public static final String ECLIPSE_MESSAGE = MESSAGES.getProperty("eclipse");
 
     private MessageConstants() {
     }

@@ -47,4 +47,12 @@
     <entry key="lesson-room">**Sala:**</entry>
     <entry key="gakko-status-message-up">Gakko żyje! :blush:</entry>
     <entry key="gakko-status-message-down">Gakko padło! :flushed:</entry>
+    <entry key="eclipse">A więc korzystasz z Eclipse... ale właściwie, dlaczego?
+
+    Jako student PJATK masz dostęp do darmowej licencji akademickiej na IntelliJ w wersji Ultimate.
+    Jest on pod każdym względem lepszy od Eclipse, czy to pod kątem interfejsu, opcji oraz posiada bogaty system wspomagania pisania kodu.
+    Na co czekasz? :clock2:
+
+    Instrukcja: https://www.jetbrains.com/community/education/#students
+    *(W trakcie rejestracji należy podać adres e-mail z domeny **@pjwstk.edu.pl**)*</entry>
 </properties>
