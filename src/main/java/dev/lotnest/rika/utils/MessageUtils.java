@@ -1,10 +1,7 @@
 package dev.lotnest.rika.utils;
 
-import dev.lotnest.rika.Rika;
 import dev.lotnest.rika.command.CommandInfo;
-import dev.lotnest.rika.configuration.CommandConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
-import dev.lotnest.rika.plan.lesson.AbstractLesson;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import org.jetbrains.annotations.NotNull;
@@ -45,18 +42,5 @@ public class MessageUtils {
         embedBuilder.setAuthor(MemberUtils.getNameAndTag(member), null, member.getUser().getAvatarUrl());
         embedBuilder.setFooter(MessageConstants.FOOTER);
         return embedBuilder;
-    }
-
-    public static void sendNextLessonMessage(@NotNull CommandInfo commandInfo) {
-        sendLessonMessage(commandInfo, Rika.getPlanManager().getPlan(0).getNextLesson());
-    }
-
-    public static void sendLessonMessage(@NotNull CommandInfo commandInfo, @NotNull AbstractLesson lesson) {
-        EmbedBuilder commandEmbedBuilder = getCommandEmbedBuilder(commandInfo, CommandConstants.PLAN);
-        commandEmbedBuilder.addField("Następna lekcja", "\n" + lesson, true);
-
-        commandInfo.getChannel()
-                .sendMessageEmbeds(commandEmbedBuilder.build())
-                .queue();
     }
 }

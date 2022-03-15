@@ -2,5 +2,5 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="prefix">!</entry>
-    <entry key="activity-type">COMPETING</entry>
+    <entry key="activity-type">WATCHING</entry>
 </properties>

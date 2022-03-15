@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <!-- @formatter:off -->
 <properties>
-    <entry key="activity">Semestr {0}</entry>
+    <entry key="activity">{0} studentów</entry>
     <entry key="footer">Rika - Lotnest#1602</entry>
     <entry key="new-student-title">Nowy student (#{0})</entry>
     <entry key="new-student-description">Witaj na Discordzie PJATK Informatyka 2020-2024 w trybie zaocznym.</entry>
@@ -40,6 +40,7 @@
     <entry key="command-no-permission">Nie masz uprawnień do użycia tej komendy.</entry>
     <entry key="muted-role-name">Wyciszony</entry>
     <entry key="work-in-progress">Prace w toku, spróbuj ponownie później.</entry>
+    <entry key="lesson-semester">**Semestr:**</entry>
     <entry key="lesson-subject">**Przedmiot:**</entry>
     <entry key="lesson-type">**Typ zajęć:**</entry>
     <entry key="lesson-start-time">**Czas rozpoczęcia:**</entry>
