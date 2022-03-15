@@ -10,7 +10,6 @@
     <entry key="boost-message-title">Nowy boost (#{0})</entry>
     <entry key="boost-message-description">Dziękujemy za boosta!</entry>
     <entry key="command-title">Komenda - !{0}</entry>
-    <entry key="student-regex">[Ss](\d){3,5},? [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,},? [AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{2,}</entry>
     <entry key="group-exercise-regex">(\d){2}[Cc]</entry>
     <entry key="group-language-regex">(\d){3}[Ll]</entry>
     <entry key="group-command-already-assigned">Już jesteś w grupie {0}.</entry>

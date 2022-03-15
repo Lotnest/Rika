@@ -10,8 +10,12 @@ import net.dv8tion.jda.api.entities.Role;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.net.URI;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import static dev.lotnest.rika.utils.MessageUtils.replacePlaceholders;
@@ -176,5 +180,19 @@ public class MemberUtils {
 
     public static boolean isExclusivePermissionUser(@NotNull String memberId) {
         return memberId.equals("209254420192428032");
+    }
+
+    public static boolean isValidStudent(@NotNull String input) {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(URI.create(IService.API_URL + "student/validate/" + input.replaceAll(" ", "%20")))
+                .build();
+        try {
+            return Boolean.parseBoolean(IService.HTTP_CLIENT.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .get(10L, TimeUnit.SECONDS));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

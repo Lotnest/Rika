@@ -12,7 +12,6 @@ public class MessageConstants {
     public static final String BOOST_MESSAGE_TITLE = MESSAGES.getProperty("boost-message-title");
     public static final String BOOST_MESSAGE_DESCRIPTION = MESSAGES.getProperty("boost-message-description");
     public static final String COMMAND_TITLE = MESSAGES.getProperty("command-title");
-    public static final String STUDENT_REGEX = MESSAGES.getProperty("student-regex");
     public static final String GROUP_EXERCISE_REGEX = MESSAGES.getProperty("group-exercise-regex");
     public static final String GROUP_LANGUAGE_REGEX = MESSAGES.getProperty("group-language-regex");
     public static final String GROUP_COMMAND_ALREADY_ASSIGNED = MESSAGES.getProperty("group-command-already-assigned");

@@ -3,6 +3,7 @@ package dev.lotnest.rika.listener;
 import dev.lotnest.rika.configuration.IdConstants;
 import dev.lotnest.rika.configuration.MessageConstants;
 import dev.lotnest.rika.utils.CommandUtils;
+import dev.lotnest.rika.utils.MemberUtils;
 import dev.lotnest.rika.utils.MessageUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -21,8 +22,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class StudentListener extends ListenerAdapter {
-
-    public static final Pattern STUDENT_PATTERN = Pattern.compile(MessageConstants.STUDENT_REGEX);
 
     @Override
     public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
@@ -101,7 +100,7 @@ public class StudentListener extends ListenerAdapter {
                 return;
             }
 
-            if (STUDENT_PATTERN.matcher(message.getContentDisplay()).matches()) {
+            if (MemberUtils.isValidStudent(message.getContentDisplay())) {
                 if (memberRoles.contains(studentRole)) {
                     embedBuilder.setDescription(MessageConstants.ALREADY_VERIFIED);
                     channel.sendMessageEmbeds(embedBuilder.build()).queue();
