@@ -100,12 +100,12 @@ public class StudentListener extends ListenerAdapter {
                 return;
             }
 
-            if (MemberUtils.isValidStudent(message.getContentDisplay())) {
-                if (memberRoles.contains(studentRole)) {
-                    embedBuilder.setDescription(MessageConstants.ALREADY_VERIFIED);
-                    channel.sendMessageEmbeds(embedBuilder.build()).queue();
-                    message.delete().queue();
-                } else {
+            boolean isStudent = MemberUtils.isStudent(member, null);
+
+            if (isStudent) {
+                embedBuilder.setDescription(MessageConstants.ALREADY_VERIFIED);
+            } else {
+                if (MemberUtils.isValidStudent(message.getContentDisplay())) {
                     guild.addRoleToMember(member, studentRole).queue();
                     try {
                         member.getUser().openPrivateChannel().submit()
@@ -120,20 +120,19 @@ public class StudentListener extends ListenerAdapter {
                         message.delete().queue();
                     } catch (IllegalStateException e) {
                         message.delete().queue();
+                        return;
                     }
-                }
-            } else {
-                if (!memberRoles.contains(studentRole)) {
+                } else {
                     embedBuilder.setDescription(MessageConstants.FAILED_TO_VERIFY);
 
                     if (verificatonFailedRole != null) {
                         guild.addRoleToMember(member, verificatonFailedRole).queue();
                     }
-
-                    channel.sendMessageEmbeds(embedBuilder.build()).queue();
-                    message.delete().queue();
                 }
             }
+
+            channel.sendMessageEmbeds(embedBuilder.build()).queue();
+            message.delete().queue();
         }));
     }
 }
