@@ -17,7 +17,7 @@
 
 Name  | Version
 :-------|--------:
-*Java*  | 8
+*Java*  | 17
 *Maven*  | 3.8.2
 *Java Discord API (JDA)* | 4.3.0_331
 *Heroku* | -
@@ -35,3 +35,4 @@ The prefix used for all commands is `!`. Commands listed below are for public us
 | `pracownikit` | Find out what kind of IT employee you really are. |
 | `ping` | Returns the gateway ping in milliseconds. |
 | `plan` | Shows the next lesson information according to the schedule. |
+| `gakko` | Returns Gakko's status (up or down). |
