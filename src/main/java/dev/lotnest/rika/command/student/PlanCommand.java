@@ -64,6 +64,7 @@ public class PlanCommand extends AbstractCommand implements IService {
                 + MessageConstants.LESSON_TYPE + " " + lessonJson.getString("identifyingKeyword") + "\n"
                 + MessageConstants.LESSON_START_TIME + " " + getLocalDateTimeString(lessonJson.getString("startTime")) + "\n"
                 + MessageConstants.LESSON_END_TIME + " " + getLocalDateTimeString(lessonJson.getString("endTime")) + "\n"
-                + MessageConstants.LESSON_ROOM + " " + lessonJson.getString("room");
+                + MessageConstants.LESSON_ROOM + " " + lessonJson.getString("room")
+                + MessageConstants.LESSON_TIME_LEFT + " " + lessonJson.getString("timeLeft");
     }
 }
