@@ -5,6 +5,7 @@ import dev.lotnest.rika.configuration.MessageConstants;
 import dev.lotnest.rika.listener.CommandListener;
 import dev.lotnest.rika.listener.ReactionListener;
 import dev.lotnest.rika.listener.StudentListener;
+import dev.lotnest.rika.utils.IService;
 import dev.lotnest.rika.utils.MessageUtils;
 import dev.lotnest.rika.utils.TimeUtils;
 import lombok.SneakyThrows;
@@ -16,9 +17,9 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import java.awt.*;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -84,16 +85,15 @@ public class Rika {
                 TimeUnit.MINUTES);
     }
 
-    @SneakyThrows
     private static void startDynoWakeUpTask() {
-        URL url = new URL("https://rika-bot-api.herokuapp.com/");
+        URI uri = URI.create("https://rika-bot-api.herokuapp.com/");
         TimeUtils.SCHEDULED_EXECUTOR_SERVICE.scheduleAtFixedRate(() -> {
                     try {
-                        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                        httpURLConnection.setRequestMethod("GET");
-                        httpURLConnection.setConnectTimeout(30000);
-                        httpURLConnection.setReadTimeout(30000);
-                    } catch (IOException ignored) {
+                        HttpRequest httpRequest = HttpRequest.newBuilder()
+                                .uri(uri)
+                                .build();
+                        IService.HTTP_CLIENT.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString());
+                    } catch (Exception ignored) {
                     }
                 },
                 0L,
