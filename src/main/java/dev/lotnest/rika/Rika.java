@@ -16,6 +16,9 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -42,6 +45,7 @@ public class Rika {
 
         awaitReady(now);
         startPresenceUpdateTask();
+        startDynoWakeUpTask();
     }
 
     public static JDA getJDA() {
@@ -77,6 +81,23 @@ public class Rika {
         TimeUtils.SCHEDULED_EXECUTOR_SERVICE.scheduleAtFixedRate(() -> JDA.getPresence().setActivity(Activity.of(ConfigConstants.ACTIVITY_TYPE, MessageUtils.replacePlaceholders(MessageConstants.ACTIVITY, String.valueOf(GUILD.getMemberCount() - 1)))),
                 0L,
                 1L,
+                TimeUnit.MINUTES);
+    }
+
+    @SneakyThrows
+    private static void startDynoWakeUpTask() {
+        URL url = new URL("https://rika-bot-api.herokuapp.com/");
+        TimeUtils.SCHEDULED_EXECUTOR_SERVICE.scheduleAtFixedRate(() -> {
+                    try {
+                        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                        httpURLConnection.setRequestMethod("GET");
+                        httpURLConnection.setConnectTimeout(30000);
+                        httpURLConnection.setReadTimeout(30000);
+                    } catch (IOException ignored) {
+                    }
+                },
+                0L,
+                20L,
                 TimeUnit.MINUTES);
     }
 }
