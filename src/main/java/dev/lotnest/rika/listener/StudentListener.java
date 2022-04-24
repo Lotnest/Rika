@@ -19,7 +19,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class StudentListener extends ListenerAdapter {
 
@@ -100,7 +99,7 @@ public class StudentListener extends ListenerAdapter {
                 return;
             }
 
-            boolean isStudent = MemberUtils.isStudent(member, null);
+            boolean isStudent = MemberUtils.isStudent(member);
 
             if (isStudent) {
                 embedBuilder.setDescription(MessageConstants.ALREADY_VERIFIED);

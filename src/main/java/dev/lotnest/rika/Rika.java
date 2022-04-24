@@ -86,7 +86,7 @@ public class Rika {
     }
 
     private static void startDynoWakeUpTask() {
-        URI uri = URI.create("https://rika-bot-api.herokuapp.com/");
+        URI uri = URI.create(IService.API_URL);
         TimeUtils.SCHEDULED_EXECUTOR_SERVICE.scheduleAtFixedRate(() -> {
                     try {
                         HttpRequest httpRequest = HttpRequest.newBuilder()

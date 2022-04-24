@@ -51,7 +51,7 @@ public class PlanCommand extends AbstractCommand implements IService {
 
     @Override
     public @NotNull String getServiceUrl() {
-        return API_URL + "/lesson/next";
+        return API_URL + "lesson/next";
     }
 
     private @NotNull String getLocalDateTimeString(@NotNull String jsonValue) {
@@ -61,7 +61,7 @@ public class PlanCommand extends AbstractCommand implements IService {
     private @NotNull String getLessonString(@NotNull JSONObject lessonJson) {
         return MessageConstants.LESSON_SEMESTER + " " + lessonJson.getInt("semesterNumber") + "\n"
                 + MessageConstants.LESSON_SUBJECT + " " + lessonJson.getString("code") + "\n"
-                + MessageConstants.LESSON_TYPE + " " + lessonJson.getString("identifyingKeyword") + "\n"
+                + MessageConstants.LESSON_TYPE + " " + lessonJson.getString("typeName") + "\n"
                 + MessageConstants.LESSON_START_TIME + " " + getLocalDateTimeString(lessonJson.getString("startTime")) + "\n"
                 + MessageConstants.LESSON_END_TIME + " " + getLocalDateTimeString(lessonJson.getString("endTime")) + "\n"
                 + MessageConstants.LESSON_ROOM + " " + lessonJson.getString("room") + "\n"

@@ -166,8 +166,8 @@ public class MemberUtils {
         return hasRole;
     }
 
-    public static boolean isStudent(@NotNull Member member, @Nullable MessageChannel messageChannelIfNoRole) {
-        return hasRole(member, messageChannelIfNoRole, IdConstants.STUDENT_ROLE);
+    public static boolean isStudent(@NotNull Member member) {
+        return hasRole(member, null, IdConstants.STUDENT_ROLE);
     }
 
     public static boolean isModerator(@NotNull Member member, @Nullable MessageChannel messageChannelIfNoRole) {
